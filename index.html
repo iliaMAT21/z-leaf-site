@@ -151,10 +151,14 @@
     function setLanguage(lang) {
       const elements = document.querySelectorAll('[data-lang]');
       elements.forEach(el => {
-        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
       });
+      localStorage.setItem('language', lang);
     }
-    window.onload = () => setLanguage('ru');
+    window.onload = () => {
+      const lang = localStorage.getItem('language') || 'ru';
+      setLanguage(lang);
+    };
   </script>
 </head>
 <body>

@@ -113,4 +113,47 @@ header.sticky-header {
   .nav-links.active {
     display: flex;
   }
+body {
+  background: linear-gradient(145deg, #0f0f0f, #151515);
+  background-image: url('images/smoke-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+.strain-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px 3px rgba(0, 255, 128, 0.5);
+}
+.search-bar input {
+  border-radius: 999px;
+  padding: 12px 20px;
+  background-color: #222;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1em;
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+.search-bar input:focus {
+  border-color: #0f0;
+  outline: none;
+  box-shadow: 0 0 10px #0f0;
+}
+.strain-card {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

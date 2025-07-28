@@ -46,14 +46,15 @@
       transition: transform 0.2s;
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
     .card:hover {
       transform: scale(1.02);
     }
     .card img {
       width: 100%;
-      height: auto;
-      aspect-ratio: 4 / 3;
+      height: 200px;
+      max-height: 200px;
       border-radius: 12px;
       margin-bottom: 12px;
       object-fit: cover;
@@ -117,7 +118,11 @@
       const value = input.value.toLowerCase().trim();
       cards.forEach(card => {
         const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(value) ? 'flex' : 'none';
+        if (title.includes(value)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
     });
   </script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Z-Leaf — Библиотека Сортов</title>
+  <title>Z-Leaf — Strain Library</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -21,19 +21,6 @@
       font-weight: bold;
       letter-spacing: 1px;
     }
-    .language-switcher {
-      text-align: center;
-      margin: 10px;
-    }
-    .language-switcher button {
-      margin: 0 5px;
-      padding: 5px 10px;
-      border-radius: 6px;
-      background: #444;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
     .strain-grid {
       display: flex;
       flex-wrap: wrap;
@@ -47,7 +34,7 @@
       border-radius: 12px;
       width: 220px;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
     }
     .strain-card img {
@@ -57,6 +44,7 @@
     }
     .strain-card:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 10px #90ee90;
     }
     .strain-card h2 {
       margin-bottom: 10px;
@@ -72,6 +60,7 @@
       background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
+      animation: fadeIn 0.3s ease;
     }
     .modal-content {
       background: #222;
@@ -79,6 +68,15 @@
       border-radius: 10px;
       max-width: 500px;
       text-align: center;
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     .close-button {
       float: right;
@@ -104,43 +102,24 @@
   <script>
     const strains = {
       'Gusher': {
-        ru: "Gusher — мощный гибрид с фруктовым вкусом и эффектом плавного расслабления. Идеален для отдыха после долгого дня.",
-        en: "Gusher is a powerful hybrid with fruity flavor and smooth relaxing effects. Great for unwinding after a long day."
+        en: "Type: Hybrid\nTHC: ~22–24%\nRegion: California, USA\nRating: ⭐⭐⭐⭐☆\n\n🍇 Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste, it delivers a relaxing yet euphoric body high. Perfect for evening wind-downs and pain relief, it's also visually striking with purple hues and frosty trichomes. Highly praised in California dispensaries, users report reduced anxiety, improved mood, and creative bursts. A top-shelf favorite, Gusher is ideal for users seeking flavor and mellow vibes."
       },
       'Amnesia': {
-        ru: "Amnesia — бодрящий сорт сатива, пробуждающий креативность и лёгкую эйфорию. Отлично подойдёт для дневной активности.",
-        en: "Amnesia is an energizing sativa strain that boosts creativity and mild euphoria. Perfect for daytime activities."
+        en: "Type: Sativa\nTHC: ~20–22%\nRegion: Netherlands\nRating: ⭐⭐⭐⭐⭐\n\n🧠 Amnesia is a legendary sativa strain born in Amsterdam. It merges Super Silver Haze and Afghan genetics, giving a long-lasting cerebral buzz. Users love its lemony flavor, creative stimulation, and uplifting euphoria. This strain is great for daytime use, mental clarity, and staying focused. Artists and thinkers especially favor Amnesia for its sharp high and flow-state experience."
       },
       'Lemon Cherry': {
-        ru: "Lemon Cherry — изысканный гибрид с нотами цитруса и сладкой вишни. Баланс между спокойствием и ментальной ясностью.",
-        en: "Lemon Cherry is a refined hybrid with citrus and cherry notes. Balanced between calm and mental clarity."
+        en: "Type: Hybrid\nTHC: ~25–27%\nRegion: California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍒 Lemon Cherry Gelato combines Sunset Sherbet and Girl Scout Cookies to create a rich, fruity delight. Its high THC levels deliver a full-body relaxation while still uplifting your spirits. This strain is both social and soothing, recommended for anxiety, insomnia, or just a flavorful smoke. Extremely popular across California, Lemon Cherry is a modern icon of West Coast cannabis."
       },
       'Sacitrus': {
-        ru: "Sacitrus — сорт с ярким цитрусовым ароматом и зарядом бодрости. Подходит для активного начала дня или креативной работы.",
-        en: "Sacitrus has a bright citrus aroma and a burst of energy. Ideal for an active morning or creative tasks."
+        en: "Type: Sativa-Dominant Hybrid\nTHC: ~19–21%\nRegion: Oregon, USA\nRating: ⭐⭐⭐⭐☆\n\n🍊 Sacitrus offers a bright citrus burst on each inhale, making it an ideal pick-me-up strain. Commonly used in the mornings, it improves mood, brings energy, and sharpens focus. Users report better productivity, clearer thoughts, and reduced stress. Grown in the fresh climates of Oregon, Sacitrus is great for creative work, light exercise, or conversations."
       },
       'Tangie': {
-        ru: "Tangie — сатива с сочным мандариновым вкусом и ясным, вдохновляющим эффектом. Любимец художников и музыкантов.",
-        en: "Tangie is a sativa with juicy tangerine flavor and clear, inspiring effect. A favorite among artists and musicians."
+        en: "Type: Sativa\nTHC: ~20–23%\nRegion: Southern California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍊 Tangie reinvents the beloved Tangerine Dream with intense citrus aroma and a euphoric, focused high. A daytime favorite, it sparks energy, creativity, and conversation. With a strong terpene profile, Tangie is a go-to for musicians, designers, and outdoor enthusiasts. Its uplifting buzz makes it one of California's top-rated citrus strains."
       }
     };
 
-    let currentLang = localStorage.getItem('language') || 'ru';
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('language', lang);
-      const activeModal = document.getElementById('modal');
-      if (activeModal.style.display === 'flex') {
-        const title = document.getElementById('modal-title').innerText;
-        if (strains[title]) {
-          document.getElementById('modal-desc').innerText = strains[title][lang];
-        }
-      }
-    }
-
     function showStrain(strainName) {
-      const desc = strains[strainName][currentLang];
+      const desc = strains[strainName].en;
       document.getElementById('modal-title').innerText = strainName;
       document.getElementById('modal-desc').innerText = desc;
       document.getElementById('modal-img').src = `images/${strainName.toLowerCase().replace(/ /g, '')}.jpg`;
@@ -161,14 +140,10 @@
     }
   </script>
 </head>
-<body onload="setLanguage(currentLang)">
-  <header>Z-Leaf — Библиотека Сортов</header>
-  <div class="language-switcher">
-    <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
-    <button onclick="setLanguage('en')">🇺🇸 English</button>
-  </div>
+<body>
+  <header>Z-Leaf — Strain Library</header>
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Поиск..." onkeyup="filterStrains()">
+    <input type="text" id="search" placeholder="Search..." onkeyup="filterStrains()">
   </div>
   <div class="strain-grid">
     <div class="strain-card" onclick="showStrain('Gusher')">
@@ -197,7 +172,7 @@
       <span class="close-button" onclick="closeModal()">&times;</span>
       <h2 id="modal-title"></h2>
       <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
-      <p id="modal-desc"></p>
+      <p id="modal-desc" style="white-space:pre-line"></p>
     </div>
   </div>
 </body>

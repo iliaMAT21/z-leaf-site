@@ -147,6 +147,15 @@
       cursor: pointer;
     }
   </style>
+  <script>
+    function setLanguage(lang) {
+      const elements = document.querySelectorAll('[data-lang]');
+      elements.forEach(el => {
+        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+      });
+    }
+    window.onload = () => setLanguage('ru');
+  </script>
 </head>
 <body>
   <div class="language-switcher">

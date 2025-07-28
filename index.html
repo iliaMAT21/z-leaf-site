@@ -11,6 +11,9 @@
   <script defer src="scripts/search.js"></script>
   <script defer src="scripts/cards-animations.js"></script>
   <script defer src="scripts/modal.js"></script>
+  <script defer src="scripts/init.js"></script>
+  <script defer src="scripts/responsive.js"></script>
+  <script defer src="scripts/interactions.js"></script>
   <style>
     :root {
       --bg-color: #0f0f0f;
@@ -167,6 +170,9 @@
       box-shadow: 0 0 24px rgba(255, 215, 0, 0.25);
       max-width: 600px;
       width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      color: var(--text-color);
     }
 
     .close-button {
@@ -231,9 +237,6 @@
       </nav>
     </div>
   </header>
-
-  <!-- ... остальная часть без изменений ... -->
-
 </body>
 </html>
   <div class="search-bar">

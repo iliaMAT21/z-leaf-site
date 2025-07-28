@@ -26,17 +26,17 @@
     }
 
     .light-mode {
-      --bg-color: #f9f9f9;
-      --card-color: #ffffff;
-      --text-color: #222;
-      --accent-color: #d4af37;
-      --border-color: #ccc;
+      --bg-color: #fff;
+      --card-color: #fff8e7;
+      --text-color: #111;
+      --accent-color: #bfa133;
+      --border-color: #ddd;
     }
 
     .sticky-header {
       position: sticky;
       top: 0;
-      background-color: #101010;
+      background-color: var(--bg-color);
       z-index: 1000;
       padding: 12px 24px;
       box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
@@ -61,7 +61,7 @@
     }
 
     .nav-links a {
-      color: #ccc;
+      color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
@@ -79,9 +79,9 @@
     .search-bar input {
       padding: 12px 24px;
       border-radius: 32px;
-      background-color: #222;
-      border: 1px solid #444;
-      color: #fff;
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
       font-size: 1em;
       width: 90%;
       max-width: 700px;
@@ -124,6 +124,7 @@
     .strain-card img {
       width: 100%;
       border-radius: 12px;
+      background-color: #000;
     }
 
     .strain-card h3 {
@@ -140,7 +141,7 @@
     }
 
     .strain-card .short-desc {
-      color: #bbb;
+      color: var(--text-color);
       font-size: 0.95em;
     }
 

@@ -5,201 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Z-Leaf — Strain Library</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Rubik', sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #1a1a1a;
-      padding: 20px;
-      text-align: center;
-      font-size: 6vw;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-    .strain-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-    }
-    .strain-card {
-      background: #1f1f1f;
-      padding: 15px;
-      border-radius: 12px;
-      width: 90vw;
-      max-width: 280px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-    }
-    .strain-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .strain-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #90ee90;
-    }
-    .strain-card h2 {
-      margin-bottom: 10px;
-      color: #90ee90;
-      font-size: 5vw;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      animation: fadeIn 0.3s ease;
-    }
-    .modal-content {
-      background: #222;
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 500px;
-      text-align: center;
-      animation: slideIn 0.3s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideIn {
-      from { transform: translateY(-30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    .close-button {
-      float: right;
-      font-size: 24px;
-      cursor: pointer;
-      color: #aaa;
-    }
-    .close-button:hover {
-      color: #fff;
-    }
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      margin: 20px;
-    }
-    .search-bar input {
-      padding: 8px;
-      width: 80vw;
-      max-width: 300px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 4vw;
-    }
-    @media (min-width: 768px) {
-      .strain-card {
-        width: 220px;
-      }
-      .strain-card h2 {
-        font-size: 18px;
-      }
-      header {
-        font-size: 28px;
-      }
-      .search-bar input {
-        font-size: 16px;
-      }
-    }
-  </style>
-
-  <script>
-    const strains = {
-      'Gusher': {
-        en: "Type: Hybrid\nTHC: ~22–24%\nRegion: California, USA\nRating: ⭐⭐⭐⭐☆\n\n🍇 Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste, it delivers a relaxing yet euphoric body high. Perfect for evening wind-downs and pain relief, it's also visually striking with purple hues and frosty trichomes. Highly praised in California dispensaries, users report reduced anxiety, improved mood, and creative bursts. A top-shelf favorite, Gusher is ideal for users seeking flavor and mellow vibes."
-      },
-      'Amnesia': {
-        en: "Type: Sativa\nTHC: ~20–22%\nRegion: Netherlands\nRating: ⭐⭐⭐⭐⭐\n\n🧠 Amnesia is a legendary sativa strain born in Amsterdam. It merges Super Silver Haze and Afghan genetics, giving a long-lasting cerebral buzz. Users love its lemony flavor, creative stimulation, and uplifting euphoria. This strain is great for daytime use, mental clarity, and staying focused. Artists and thinkers especially favor Amnesia for its sharp high and flow-state experience."
-      },
-      'Lemon Cherry': {
-        en: "Type: Hybrid\nTHC: ~25–27%\nRegion: California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍒 Lemon Cherry Gelato combines Sunset Sherbet and Girl Scout Cookies to create a rich, fruity delight. Its high THC levels deliver a full-body relaxation while still uplifting your spirits. This strain is both social and soothing, recommended for anxiety, insomnia, or just a flavorful smoke. Extremely popular across California, Lemon Cherry is a modern icon of West Coast cannabis."
-      },
-      'Sacitrus': {
-        en: "Type: Sativa-Dominant Hybrid\nTHC: ~19–21%\nRegion: Oregon, USA\nRating: ⭐⭐⭐⭐☆\n\n🍊 Sacitrus offers a bright citrus burst on each inhale, making it an ideal pick-me-up strain. Commonly used in the mornings, it improves mood, brings energy, and sharpens focus. Users report better productivity, clearer thoughts, and reduced stress. Grown in the fresh climates of Oregon, Sacitrus is great for creative work, light exercise, or conversations."
-      },
-      'Tangie': {
-        en: "Type: Sativa\nTHC: ~20–23%\nRegion: Southern California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍊 Tangie reinvents the beloved Tangerine Dream with intense citrus aroma and a euphoric, focused high. A daytime favorite, it sparks energy, creativity, and conversation. With a strong terpene profile, Tangie is a go-to for musicians, designers, and outdoor enthusiasts. Its uplifting buzz makes it one of California's top-rated citrus strains."
-      }
-    };
-
-    function showStrain(strainName) {
-      const desc = strains[strainName].en;
-      document.getElementById('modal-title').innerText = strainName;
-      document.getElementById('modal-desc').innerText = desc;
-      document.getElementById('modal-img').src = `images/${strainName.toLowerCase().replace(/ /g, '')}.jpg`;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-
-    function filterStrains() {
-      const search = document.getElementById('search').value.toLowerCase();
-      const cards = document.querySelectorAll('.strain-card');
-      cards.forEach(card => {
-        const title = card.querySelector('h2').innerText.toLowerCase();
-        card.style.display = title.includes(search) ? 'block' : 'none';
-      });
-    }
-  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="scripts.js"></script>
 </head>
+<body>
 <nav>
   <a href="index.html">🌱 Strains</a>
   <a href="history.html">📖 History</a>
 </nav>
 <header>Z-Leaf — Strain Library</header>
-  <div class="strain-grid">
-    <div class="strain-card">
-      <img src="images/gusher.jpg" alt="Gusher">
-      <h2>Gusher</h2>
-      <div class="strain-description">🌱 Индика | 📍 Калифорния | ⭐⭐⭐⭐☆<br>🧘 Расслабление и спокойствие</div>
-    </div>
-    <div class="strain-card">
-      <img src="images/amnesia.jpg" alt="Amnesia">
-      <h2>Amnesia</h2>
-      <div class="strain-description">🌿 Сатива | 📍 Нидерланды | ⭐⭐⭐⭐⭐<br>🧠 Энергия и креатив</div>
-    </div>
-    <div class="strain-card">
-      <img src="images/lemoncherry.jpg" alt="Lemon Cherry">
-      <h2>Lemon Cherry</h2>
-      <div class="strain-description">🌱 Гибрид | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>🍒 Эйфория и сладкий вкус</div>
-    </div>
-    <div class="strain-card">
-      <img src="images/sacitrus.jpg" alt="Sacitrus">
-      <h2>Sacitrus</h2>
-      <div class="strain-description">🌿 Сатива | 📍 США | ⭐⭐⭐⭐☆<br>🍊 Цитрусовая свежесть</div>
-    </div>
-    <div class="strain-card">
-      <img src="images/tangie.jpg" alt="Tangie">
-      <h2>Tangie</h2>
-      <div class="strain-description">🌿 Сатива | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>✨ Творчество и настроение</div>
-    </div>
+<div class="search-bar">
+  <input type="text" id="search" oninput="filterStrains()" placeholder="Search...">
+</div>
+<div class="strain-grid">
+  <div class="strain-card" onclick="showStrain('Gusher')">
+    <img src="images/gusher.jpg" alt="Gusher">
+    <h2>Gusher</h2>
+    <div class="strain-description">🌱 Hybrid | 📍 California | ⭐⭐⭐⭐☆<br>🍇 Relaxing and Euphoric</div>
   </div>
-  <div id="modal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-button" onclick="closeModal()">&times;</span>
-      <h2 id="modal-title"></h2>
-      <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
-      <p id="modal-desc" style="white-space:pre-line"></p>
-    </div>
+  <div class="strain-card" onclick="showStrain('Amnesia')">
+    <img src="images/amnesia.jpg" alt="Amnesia">
+    <h2>Amnesia</h2>
+    <div class="strain-description">🌿 Sativa | 📍 Netherlands | ⭐⭐⭐⭐⭐<br>🧠 Energy and Creativity</div>
   </div>
+  <div class="strain-card" onclick="showStrain('Lemon Cherry')">
+    <img src="images/lemoncherry.jpg" alt="Lemon Cherry">
+    <h2>Lemon Cherry</h2>
+    <div class="strain-description">🌱 Hybrid | 📍 California | ⭐⭐⭐⭐⭐<br>🍒 Euphoric and Sweet</div>
+  </div>
+  <div class="strain-card" onclick="showStrain('Sacitrus')">
+    <img src="images/sacitrus.jpg" alt="Sacitrus">
+    <h2>Sacitrus</h2>
+    <div class="strain-description">🌿 Sativa-Hybrid | 📍 Oregon | ⭐⭐⭐⭐☆<br>🍊 Uplifting Citrus Buzz</div>
+  </div>
+  <div class="strain-card" onclick="showStrain('Tangie')">
+    <img src="images/tangie.jpg" alt="Tangie">
+    <h2>Tangie</h2>
+    <div class="strain-description">🌿 Sativa | 📍 SoCal | ⭐⭐⭐⭐⭐<br>🍊 Creative and Energetic</div>
+  </div>
+</div>
+<div id="modal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
+    <p id="modal-desc" style="white-space:pre-line"></p>
+  </div>
+</div>
 </body>
 </html>

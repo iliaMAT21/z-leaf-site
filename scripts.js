@@ -1,49 +1,55 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("strains.json")
-    .then(res => res.json())
-    .then(data => renderStrains(data))
-    .catch(err => console.error("Ошибка загрузки strains.json:", err));
-});
-
-function renderStrains(strains) {
-  const container = document.getElementById("strain-grid");
-  strains.forEach(strain => {
-    const card = document.createElement("div");
-    card.className = "strain-card";
-    card.onclick = () => showStrainModal(strain);
-    card.innerHTML = `
-      <img src="${strain.image}" alt="${strain.name}">
-      <h2>${strain.name}</h2>
-      <div class="strain-description">
-        ${strain.emoji} ${strain.type} | 📍 ${strain.region} | ${"⭐".repeat(strain.rating)}<br>
-        ${strain.highlight}
-      </div>
-    `;
-    container.appendChild(card);
+// Загрузка данных из strains.json
+fetch('strains.json')
+  .then(res => res.json())
+  .then(data => {
+    window.strainsData = data;
+    renderStrains(data);
+  })
+  .catch(err => {
+    console.error('Ошибка при загрузке strains.json:', err);
   });
+
+// Отображение всех сортов
+function renderStrains(strains) {
+  const grid = document.getElementById('strain-grid');
+  grid.innerHTML = '';
+
+  for (const strain of strains) {
+    const card = document.createElement('div');
+    card.className = 'strain-card';
+    card.innerHTML = `
+      <img src="images/${strain.image}" alt="${strain.name}">
+      <h2>${strain.name}</h2>
+      <div class="strain-description">${strain.shortDescription}</div>
+    `;
+    card.onclick = () => showStrain(strain);
+    grid.appendChild(card);
+  }
 }
 
-function showStrainModal(strain) {
-  document.getElementById("modal-title").innerText = strain.name;
-  document.getElementById("modal-img").src = strain.image;
-  document.getElementById("modal-desc").innerText = strain.description;
-  document.getElementById("modal").style.display = "flex";
+// Поиск по названиям
+function filterStrains() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const filtered = window.strainsData.filter(strain =>
+    strain.name.toLowerCase().includes(search)
+  );
+  renderStrains(filtered);
+}
+
+// Модалка
+function showStrain(strain) {
+  document.getElementById('modal-title').innerText = strain.name;
+  document.getElementById('modal-desc').innerText = strain.description;
+  document.getElementById('modal-img').src = `images/${strain.image}`;
+  document.getElementById('modal').style.display = 'flex';
 }
 
 function closeModal() {
-  document.getElementById("modal").style.display = "none";
+  document.getElementById('modal').style.display = 'none';
 }
 
-function filterStrains() {
-  const search = document.getElementById("search").value.toLowerCase();
-  const cards = document.querySelectorAll(".strain-card");
-  cards.forEach(card => {
-    const title = card.querySelector("h2").innerText.toLowerCase();
-    card.style.display = title.includes(search) ? "block" : "none";
-  });
-}
-
+// Мобильное меню
 function toggleMenu() {
-  const nav = document.getElementById("nav-links");
-  nav.classList.toggle("active");
+  const nav = document.getElementById('nav-links');
+  nav.classList.toggle('open');
 }

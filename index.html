@@ -161,6 +161,17 @@
     }
   </script>
 </head>
+  .strain-info {
+  font-size: 3.5vw;
+  color: #ccc;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+@media (min-width: 768px) {
+  .strain-info {
+    font-size: 14px;
+  }
+}
 <body>
  <header>Z-Leaf — Strain Library</header>
 
@@ -178,18 +189,22 @@
       <h2>Gusher</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Amnesia')">
+      <p class="strain-info">🌿 Сатива | 📍 Нидерланды | ⭐⭐⭐⭐⭐<br>🧠 Мозговой подъём, подходит для креатива</p>
       <img src="images/amnesia.jpg" alt="Amnesia">
       <h2>Amnesia</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Lemon Cherry')">
+      <p class="strain-info">🌿 Гибрид | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>🍒 Эйфория и отдых, отличный вкус</p>
       <img src="images/lemoncherry.jpg" alt="Lemon Cherry">
       <h2>Lemon Cherry</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Sacitrus')">
+      <p class="strain-info">🌿 Сатива-доминирующий гибрид | 📍 Орегон | ⭐⭐⭐⭐☆<br>🍊 Яркость, бодрость и лёгкость</p>
       <img src="images/sacitrus.jpg" alt="Sacitrus">
       <h2>Sacitrus</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Tangie')">
+      <p class="strain-info">🌿 Сатива | 📍 Южная Калифорния | ⭐⭐⭐⭐⭐<br>🍊 Энергия, фокус и вдохновение</p>
       <img src="images/tangie.jpg" alt="Tangie">
       <h2>Tangie</h2>
     </div>

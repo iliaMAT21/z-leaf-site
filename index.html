@@ -17,7 +17,7 @@
       background: #1a1a1a;
       padding: 20px;
       text-align: center;
-      font-size: 24px;
+      font-size: 6vw;
       font-weight: bold;
       letter-spacing: 1px;
     }
@@ -30,9 +30,10 @@
     }
     .strain-card {
       background: #1f1f1f;
-      padding: 20px;
+      padding: 15px;
       border-radius: 12px;
-      width: 220px;
+      width: 90vw;
+      max-width: 280px;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
@@ -49,6 +50,7 @@
     .strain-card h2 {
       margin-bottom: 10px;
       color: #90ee90;
+      font-size: 5vw;
     }
     .modal {
       display: none;
@@ -60,12 +62,14 @@
       background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
+      padding: 20px;
       animation: fadeIn 0.3s ease;
     }
     .modal-content {
       background: #222;
-      padding: 30px;
+      padding: 20px;
       border-radius: 10px;
+      width: 100%;
       max-width: 500px;
       text-align: center;
       animation: slideIn 0.3s ease;
@@ -94,9 +98,25 @@
     }
     .search-bar input {
       padding: 8px;
-      width: 250px;
+      width: 80vw;
+      max-width: 300px;
       border-radius: 6px;
       border: 1px solid #ccc;
+      font-size: 4vw;
+    }
+    @media (min-width: 768px) {
+      .strain-card {
+        width: 220px;
+      }
+      .strain-card h2 {
+        font-size: 18px;
+      }
+      header {
+        font-size: 28px;
+      }
+      .search-bar input {
+        font-size: 16px;
+      }
     }
   </style>
   <script>

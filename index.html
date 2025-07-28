@@ -64,6 +64,7 @@
       text-align: center;
       width: 100%;
       max-width: 300px;
+      cursor: pointer;
     }
     .card:hover {
       transform: scale(1.02);
@@ -100,7 +101,7 @@
     <button onclick="filterByType('Автоцвет')">Автоцвет</button>
   </div>
   <div class="container" id="strain-container">
-    <div class="card">
+    <div class="card" onclick="openStrainPage('amnesia')">
       <img loading="lazy" src="images/amnesia.jpg" alt="Amnesia Feminized">
       <h2>Amnesia Feminized</h2>
       <p><strong>Тип:</strong> Сатива</p>
@@ -109,7 +110,7 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
       <p>Прост в выращивании, подходит для новичков. Быстрое цветение — около 10 недель. Бодрящий, творческий эффект.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openStrainPage('sacitrus')">
       <img loading="lazy" src="images/sacitrus.jpg" alt="Sacitrus Haze Feminized">
       <h2>Sacitrus Haze Feminized</h2>
       <p><strong>Тип:</strong> Сатива / Гибрид</p>
@@ -117,7 +118,7 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
       <p>Цитрусовый вкус, мягкий психоделический эффект. Поднимает настроение, помогает сосредоточиться.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openStrainPage('lemoncherry')">
       <img loading="lazy" src="images/lemoncherry.jpg" alt="Lemon Cherry Cookies Auto">
       <h2>Lemon Cherry Cookies Auto</h2>
       <p><strong>Тип:</strong> Автоцвет / Гибрид</p>
@@ -126,7 +127,7 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐⭐</p>
       <p>Эйфорический эффект, подходит для творчества. Вкус — лимон с вишнёй.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openStrainPage('tangie')">
       <img loading="lazy" src="images/tangie.jpg" alt="Tangie">
       <h2>Tangie</h2>
       <p><strong>Тип:</strong> Сатива-доминантный</p>
@@ -134,7 +135,7 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
       <p>Мандариновый вкус, высокая урожайность, энергетический эффект. Хорош для улицы.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openStrainPage('gusher')">
       <img loading="lazy" src="images/gusher.jpg" alt="Gusher">
       <h2>Gusher</h2>
       <p><strong>Тип:</strong> Индичный гибрид</p>
@@ -151,23 +152,19 @@
       const value = input.value.toLowerCase().trim();
       cards.forEach(card => {
         const title = card.querySelector('h2').textContent.toLowerCase();
-        if (title.includes(value)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = title.includes(value) ? 'flex' : 'none';
       });
     });
 
     function filterByType(type) {
       cards.forEach(card => {
         const text = card.textContent;
-        if (type === '' || text.includes(type)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
+        card.style.display = (type === '' || text.includes(type)) ? 'flex' : 'none';
       });
+    }
+
+    function openStrainPage(id) {
+      window.location.href = `strains/${id}.html`;
     }
   </script>
 </body>

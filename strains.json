@@ -1,1 +1,26 @@
+[
+  {
+    "name": "Gusher",
+    "type": "Indica",
+    "thc": "22–24%",
+    "region": "California, USA",
+    "rating": 4,
+    "effect": "Relaxation and peace",
+    "emoji": "🧘",
+    "image": "gusher.jpg",
+    "desc": "🍇 Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste..."
+  },
+  {
+    "name": "Amnesia",
+    "type": "Sativa",
+    "thc": "20–22%",
+    "region": "Netherlands",
+    "rating": 5,
+    "effect": "Energy and creativity",
+    "emoji": "🧠",
+    "image": "amnesia.jpg",
+    "desc": "🧠 Amnesia is a legendary sativa strain born in Amsterdam. It merges Super Silver Haze and Afghan genetics..."
+  }
+  // добавь остальные сорта сюда
+]
 

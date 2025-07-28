@@ -1,45 +1,32 @@
-  "amnesia": {
-    "name": "Amnesia",
-    "type": "Sativa",
-    "thc": "~20–22%",
-    "region": "Netherlands",
-    "rating": 5,
-    "emoji": "🧠",
-    "desc": "Amnesia is a legendary sativa strain born in Amsterdam. It merges Super Silver Haze and Afghan genetics, giving a long-lasting cerebral buzz. Users love its lemony flavor, creative stimulation, and uplifting euphoria. This strain is great for daytime use, mental clarity, and staying focused. Artists and thinkers especially favor Amnesia for its sharp high and flow-state experience."
-  },
-  "gusher": {
+[
+  {
     "name": "Gusher",
-    "type": "Hybrid",
-    "thc": "~22–24%",
-    "region": "California, USA",
-    "rating": 4,
-    "emoji": "🍇",
-    "desc": "Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste, it delivers a relaxing yet euphoric body high. Perfect for evening wind-downs and pain relief, it's also visually striking with purple hues and frosty trichomes."
+    "shortDescription": "🌱 Индика | 📍 Калифорния | ⭐⭐⭐⭐☆<br>🧘 Расслабление и спокойствие",
+    "description": "Type: Hybrid\nTHC: ~22–24%\nRegion: California, USA\nRating: ⭐⭐⭐⭐☆\n\n🍇 Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste...",
+    "image": "gusher.jpg"
   },
-  "lemoncherry": {
+  {
+    "name": "Amnesia",
+    "shortDescription": "🌿 Сатива | 📍 Нидерланды | ⭐⭐⭐⭐⭐<br>🧠 Энергия и креатив",
+    "description": "Type: Sativa\nTHC: ~20–22%\nRegion: Netherlands\nRating: ⭐⭐⭐⭐⭐\n\n🧠 Amnesia is a legendary sativa strain born in Amsterdam...",
+    "image": "amnesia.jpg"
+  },
+  {
     "name": "Lemon Cherry",
-    "type": "Hybrid",
-    "thc": "~25–27%",
-    "region": "California, USA",
-    "rating": 5,
-    "emoji": "🍒",
-    "desc": "Lemon Cherry Gelato combines Sunset Sherbet and Girl Scout Cookies to create a rich, fruity delight. Its high THC levels deliver a full-body relaxation while still uplifting your spirits. This strain is both social and soothing, recommended for anxiety, insomnia, or just a flavorful smoke."
+    "shortDescription": "🌱 Гибрид | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>🍒 Эйфория и сладкий вкус",
+    "description": "Type: Hybrid\nTHC: ~25–27%\nRegion: California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍒 Lemon Cherry Gelato combines Sunset Sherbet and GSC...",
+    "image": "lemoncherry.jpg"
   },
-  "sacitrus": {
+  {
     "name": "Sacitrus",
-    "type": "Sativa-Dominant Hybrid",
-    "thc": "~19–21%",
-    "region": "Oregon, USA",
-    "rating": 4,
-    "emoji": "🍊",
-    "desc": "Sacitrus offers a bright citrus burst on each inhale, making it an ideal pick-me-up strain. Commonly used in the mornings, it improves mood, brings energy, and sharpens focus. Users report better productivity, clearer thoughts, and reduced stress."
+    "shortDescription": "🌿 Сатива | 📍 США | ⭐⭐⭐⭐☆<br>🍊 Цитрусовая свежесть",
+    "description": "Type: Sativa-Dominant Hybrid\nTHC: ~19–21%\nRegion: Oregon, USA\nRating: ⭐⭐⭐⭐☆\n\n🍊 Sacitrus offers a bright citrus burst...",
+    "image": "sacitru.jpg"
   },
-  "tangie": {
+  {
     "name": "Tangie",
-    "type": "Sativa",
-    "thc": "~20–23%",
-    "region": "California, USA",
-    "rating": 5,
-    "emoji": "🍊",
-    "desc": "Tangie reinvents the beloved Tangerine Dream with intense citrus aroma and a euphoric, focused high. A daytime favorite, it sparks energy, creativity, and conversation. With a strong terpene profile, Tangie is a go-to for musicians, designers, and outdoor enthusiasts."
+    "shortDescription": "🌿 Сатива | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>✨ Творчество и настроение",
+    "description": "Type: Sativa\nTHC: ~20–23%\nRegion: Southern California\nRating: ⭐⭐⭐⭐⭐\n\n🍊 Tangie reinvents Tangerine Dream...",
+    "image": "tangie.jpg"
   }
+]

@@ -1,4 +1,3 @@
-// Загрузка данных из strains.json
 fetch('strains.json')
   .then(res => res.json())
   .then(data => {
@@ -9,7 +8,6 @@ fetch('strains.json')
     console.error('Ошибка при загрузке strains.json:', err);
   });
 
-// Отображение всех сортов
 function renderStrains(strains) {
   const grid = document.getElementById('strain-grid');
   grid.innerHTML = '';
@@ -27,7 +25,6 @@ function renderStrains(strains) {
   }
 }
 
-// Поиск по названиям
 function filterStrains() {
   const search = document.getElementById('search').value.toLowerCase();
   const filtered = window.strainsData.filter(strain =>
@@ -36,7 +33,6 @@ function filterStrains() {
   renderStrains(filtered);
 }
 
-// Модалка
 function showStrain(strain) {
   document.getElementById('modal-title').innerText = strain.name;
   document.getElementById('modal-desc').innerText = strain.description;
@@ -48,7 +44,6 @@ function closeModal() {
   document.getElementById('modal').style.display = 'none';
 }
 
-// Мобильное меню
 function toggleMenu() {
   const nav = document.getElementById('nav-links');
   nav.classList.toggle('open');

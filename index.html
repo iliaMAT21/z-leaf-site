@@ -86,6 +86,32 @@
       margin: 4px 0;
       line-height: 1.4;
     }
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -101,7 +127,7 @@
     <button onclick="filterByType('Автоцвет')">Автоцвет</button>
   </div>
   <div class="container" id="strain-container">
-    <div class="card" onclick="openStrainPage('amnesia')">
+    <div class="card" onclick="openModal('Amnesia', 'Сатива', '24%', '😊 Эйфория, 🎨 Творчество', '⭐⭐⭐⭐☆', 'Amnesia — популярный сативный сорт с бодрящим эффектом. Улучшает настроение и стимулирует мозговую активность. Идеален для дневного использования.', 'images/amnesia.jpg')">
       <img loading="lazy" src="images/amnesia.jpg" alt="Amnesia">
       <h2>Amnesia</h2>
       <p><strong>Тип:</strong> Сатива</p>
@@ -110,43 +136,57 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
       <p>Прост в выращивании, бодрит и вдохновляет.</p>
     </div>
-    <div class="card" onclick="openStrainPage('gusher')">
+    <div class="card" onclick="openModal('Gusher', 'Индичный гибрид', '26%', '😴 Расслабление, 😌 Умиротворение', '⭐⭐⭐⭐☆', 'Gusher — сорт с фруктовым вкусом и глубоким расслабляющим эффектом. Часто используется для снятия стресса и головной боли.', 'images/gusher.jpg')">
       <img loading="lazy" src="images/gusher.jpg" alt="Gusher">
       <h2>Gusher</h2>
-      <p><strong>Тип:</strong> Гибрид</p>
+      <p><strong>Тип:</strong> Индичный гибрид</p>
       <p><strong>THC:</strong> ~26%</p>
-      <p><strong>Эффекты:</strong> 😄 Счастье, 💭 Расслабление</p>
+      <p><strong>Эффекты:</strong> 😴 Расслабление, 😌 Умиротворение</p>
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-      <p>Яркий вкус, успокаивающий эффект. Идеален для вечера.</p>
+      <p>Снимает стресс и головную боль.</p>
     </div>
-    <div class="card" onclick="openStrainPage('lemoncherry')">
-      <img loading="lazy" src="images/lemoncherry.jpg" alt="Lemon Cherry">
-      <h2>Lemon Cherry</h2>
-      <p><strong>Тип:</strong> Гибрид</p>
-      <p><strong>THC:</strong> ~25%</p>
-      <p><strong>Эффекты:</strong> 😌 Расслабление, 🍒 Вкус</p>
+    <div class="card" onclick="openModal('Sacitrus Haze', 'Сатива / Гибрид', '22%', '🍊 Цитрусовый кайф, 😊 Энергия', '⭐⭐⭐⭐', 'Sacitrus Haze — яркий и бодрящий сорт с преобладанием цитрусового вкуса. Повышает внимание и настроение.', 'images/sacitrus.jpg')">
+      <img loading="lazy" src="images/sacitrus.jpg" alt="Sacitrus Haze">
+      <h2>Sacitrus Haze</h2>
+      <p><strong>Тип:</strong> Сатива / Гибрид</p>
+      <p><strong>THC:</strong> ~22%</p>
+      <p><strong>Эффекты:</strong> 🍊 Цитрусовый кайф, 😊 Энергия</p>
+      <p><strong>Оценка:</strong> ⭐⭐⭐⭐</p>
+      <p>Вкус и бодрость — вот его сила.</p>
+    </div>
+    <div class="card" onclick="openModal('Lemon Cherry Cookies', 'Автоцвет / Гибрид', '28%', '😄 Эйфория, 🌈 Креативность', '⭐⭐⭐⭐⭐', 'Lemon Cherry Cookies — один из самых мощных автоцветов. Вкус лимона и вишни. Даёт мощный прилив радости и вдохновения.', 'images/lemoncherry.jpg')">
+      <img loading="lazy" src="images/lemoncherry.jpg" alt="Lemon Cherry Cookies">
+      <h2>Lemon Cherry Cookies</h2>
+      <p><strong>Тип:</strong> Автоцвет / Гибрид</p>
+      <p><strong>THC:</strong> ~28%</p>
+      <p><strong>Эффекты:</strong> 😄 Эйфория, 🌈 Креативность</p>
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Фруктовый аромат, снижает тревожность и улучшает настроение.</p>
+      <p>Лимонный кайф с вишнёвым послевкусием.</p>
     </div>
-    <div class="card" onclick="openStrainPage('sacitrus')">
-      <img loading="lazy" src="images/sacitrus.jpg" alt="Sacitrus">
-      <h2>Sacitrus</h2>
-      <p><strong>Тип:</strong> Сатива</p>
-      <p><strong>THC:</strong> ~27%</p>
-      <p><strong>Эффекты:</strong> ⚡ Энергия, 🍊 Цитрус</p>
-      <p><strong>Оценка:</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Яркий и бодрящий цитрусовый вкус. Идеален для дневной активности и спорта.</p>
-    </div>
-    <div class="card" onclick="openStrainPage('tangie')">
+    <div class="card" onclick="openModal('Tangie', 'Сатива-доминантный', '21%', '🍊 Энергия, ✨ Вдохновение', '⭐⭐⭐⭐☆', 'Tangie — классика с мандариновым вкусом. Отлично подходит для творчества и утреннего заряда.', 'images/tangie.jpg')">
       <img loading="lazy" src="images/tangie.jpg" alt="Tangie">
       <h2>Tangie</h2>
-      <p><strong>Тип:</strong> Сатива</p>
-      <p><strong>THC:</strong> ~23%</p>
-      <p><strong>Эффекты:</strong> 😃 Эйфория, 🎧 Фокус</p>
+      <p><strong>Тип:</strong> Сатива-доминантный</p>
+      <p><strong>THC:</strong> ~21%</p>
+      <p><strong>Эффекты:</strong> 🍊 Энергия, ✨ Вдохновение</p>
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-      <p>Популярный цитрусовый сорт. Подходит для креативной и социальной активности.</p>
+      <p>Мандариновый аромат, творческий настрой.</p>
     </div>
   </div>
+
+  <div class="modal" id="strain-modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <img id="modal-img" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 12px;">
+      <h2 id="modal-title"></h2>
+      <p><strong>Тип:</strong> <span id="modal-type"></span></p>
+      <p><strong>THC:</strong> <span id="modal-thc"></span></p>
+      <p><strong>Эффекты:</strong> <span id="modal-effects"></span></p>
+      <p><strong>Оценка:</strong> <span id="modal-rating"></span></p>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
   <script>
     const input = document.getElementById('search-input');
 
@@ -166,9 +206,19 @@
       });
     }
 
-    function openStrainPage(id) {
-      const safeId = encodeURIComponent(id.toLowerCase());
-      window.location.href = `./strains/${safeId}.html`;
+    function openModal(title, type, thc, effects, rating, description, imgSrc) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-type').textContent = type;
+      document.getElementById('modal-thc').textContent = thc;
+      document.getElementById('modal-effects').textContent = effects;
+      document.getElementById('modal-rating').textContent = rating;
+      document.getElementById('modal-description').textContent = description;
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('strain-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('strain-modal').style.display = 'none';
     }
   </script>
 </body>

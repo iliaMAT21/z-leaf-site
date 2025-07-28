@@ -134,6 +134,12 @@
       document.getElementById('modal').style.display = 'none';
     }
   </script>
+  function likeStrain() {
+  alert("Спасибо! Мы учли твою оценку 😎");
+}
+  window.onload = () => {
+  setLanguage(currentLang); // Установить язык при загрузке
+};
 </head>
 <body>
   <header>Z-Leaf — Библиотека Сортов</header>
@@ -141,6 +147,13 @@
     <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
     <button onclick="setLanguage('en')">🇺🇸 English</button>
   </div>
+  <div style="margin-top: 20px;">
+  <p>Оцени этот сорт:</p>
+  <div id="rating-stars">
+    ⭐⭐⭐⭐⭐
+  </div>
+  <button style="margin-top: 10px;" onclick="likeStrain()">❤️ Мне понравилось</button>
+</div>
   <div class="strain-grid">
     <div class="strain-card" onclick="showStrain('Gusher')">
       <h2>Gusher</h2>

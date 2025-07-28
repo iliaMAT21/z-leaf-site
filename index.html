@@ -9,41 +9,88 @@
   <script defer src="scripts.js"></script>
   <style>
     body {
-      background-color: #111;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
       font-family: 'Rubik', sans-serif;
-      color: #fff;
+      color: #eee;
       margin: 0;
       padding: 0;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: #101010;
+      z-index: 1000;
+      padding: 12px 24px;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: gold;
+    }
+    .nav-links a {
+      color: #ccc;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: gold;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .search-bar input {
+      padding: 12px 24px;
+      border-radius: 32px;
+      background-color: #222;
+      border: 1px solid #444;
+      color: #fff;
+      font-size: 1em;
+      width: 90%;
+      max-width: 700px;
+      transition: all 0.3s ease;
+    }
+    .search-bar input:focus {
+      outline: none;
+      border-color: gold;
+      box-shadow: 0 0 10px gold;
     }
     .strain-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 24px;
       padding: 20px;
     }
     .strain-card {
-      background: #1b1b1b;
-      border-radius: 12px;
-      padding: 16px;
-      width: 230px;
-      box-shadow: 0 0 10px rgba(0,255,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #151515;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 18px;
+      width: 240px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+      transition: all 0.3s ease;
       cursor: pointer;
     }
     .strain-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 16px rgba(0,255,0,0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     }
     .strain-card img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 12px;
     }
     .strain-card h3 {
-      margin-top: 10px;
-      margin-bottom: 6px;
-      font-size: 1.2em;
-      color: #fff;
+      margin-top: 12px;
+      margin-bottom: 8px;
+      font-size: 1.25em;
+      color: #ffd700;
     }
     .strain-card .stars {
       color: gold;
@@ -51,8 +98,35 @@
       margin-bottom: 6px;
     }
     .strain-card .short-desc {
-      color: #aaa;
+      color: #bbb;
       font-size: 0.95em;
+    }
+    .modal {
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: 0 0 24px rgba(255, 215, 0, 0.25);
+      max-width: 600px;
+      width: 90%;
+    }
+    .close-button {
+      float: right;
+      font-size: 1.5em;
+      color: #888;
+      cursor: pointer;
+    }
+    .close-button:hover {
+      color: gold;
     }
   </style>
 </head>
@@ -78,12 +152,55 @@
     <div class="modal-content" onclick="event.stopPropagation()">
       <span class="close-button" onclick="closeModal()">&times;</span>
       <h2 id="modal-title"></h2>
-      <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
-      <p id="modal-desc" style="white-space:pre-line; font-size: 1.2em; line-height: 1.6; color: #ddd;"></p>
+      <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:12px; margin: 20px 0;">
+      <p id="modal-desc" style="white-space:pre-line; font-size: 1.1em; line-height: 1.6; color: #ddd;"></p>
     </div>
   </div>
 
   <script>
+    const strains = [
+      {
+        name: "Amnesia",
+        type: "Sativa",
+        origin: "Netherlands",
+        rating: 4.7,
+        effect: "Amnesia offers an energetic, euphoric high with enhanced focus and creativity. A classic morning pick-me-up.",
+        image: "images/amnesia.jpg"
+      },
+      {
+        name: "Gusher",
+        type: "Indica",
+        origin: "California",
+        rating: 4.3,
+        effect: "Gusher brings deep body relaxation with a fruity taste and sweet aroma. Great for stress and tension.",
+        image: "images/gusher.jpg"
+      },
+      {
+        name: "Lemon Cherry",
+        type: "Hybrid",
+        origin: "California",
+        rating: 4.5,
+        effect: "Lemon Cherry delivers euphoria and happiness with notes of cherry candy and citrus freshness.",
+        image: "images/lemoncherry.jpg"
+      },
+      {
+        name: "SacitruS",
+        type: "Sativa",
+        origin: "USA",
+        rating: 4.0,
+        effect: "Bright citrus aroma, clear-headed high and light mood lift. A solid go-to for creative energy.",
+        image: "images/sacitruS.jpg"
+      },
+      {
+        name: "Tangie",
+        type: "Sativa",
+        origin: "California",
+        rating: 4.6,
+        effect: "Tangie kicks off with strong tangerine scent, bringing creativity, mood boost and clean energy.",
+        image: "images/tangie.jpg"
+      }
+    ];
+
     function createStrainCard(strain) {
       const card = document.createElement('div');
       card.className = 'strain-card';
@@ -132,4 +249,3 @@
   </script>
 </body>
 </html>
-

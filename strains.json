@@ -3,40 +3,40 @@
     "name": "Amnesia",
     "type": "Sativa",
     "origin": "Netherlands",
-    "rating": 5,
-    "effect": "Energy and creativity",
-    "image": "images/amnesia.png"
+    "rating": 4.7,
+    "effect": "Amnesia offers an energetic, euphoric high with enhanced focus and creativity. Perfect for daytime use when you need mental clarity without being too wired.",
+    "image": "images/amnesia.jpg"
   },
   {
     "name": "Gusher",
     "type": "Indica",
     "origin": "California",
-    "rating": 4,
-    "effect": "Relaxation and calmness",
-    "image": "images/gusher.png"
+    "rating": 4.3,
+    "effect": "Gusher brings deep physical relaxation and a fruity punch of flavor. Ideal for stress relief, chill nights, or winding down after a long day.",
+    "image": "images/gusher.jpg"
   },
   {
     "name": "Lemon Cherry",
     "type": "Hybrid",
     "origin": "California",
-    "rating": 5,
-    "effect": "Euphoria and sweet taste",
-    "image": "images/lemoncherry.png"
+    "rating": 4.5,
+    "effect": "Lemon Cherry delivers a blissful high with hints of cherry candy and citrus. It balances euphoria and calm, making it great for creativity and mood boosts.",
+    "image": "images/lemoncherry.jpg"
   },
   {
-    "name": "Sacitrus",
+    "name": "SacitruS",
     "type": "Sativa",
     "origin": "USA",
-    "rating": 4,
-    "effect": "Citrusy freshness",
-    "image": "images/sacitrus.png"
+    "rating": 4.0,
+    "effect": "SacitruS hits with a citrus burst and an uplifting, clear-headed high. Great for staying focused and productive while keeping your spirits light.",
+    "image": "images/sacitruS.jpg"
   },
   {
     "name": "Tangie",
     "type": "Sativa",
     "origin": "California",
-    "rating": 4,
-    "effect": "Creativity and good mood",
-    "image": "images/tangie.png"
+    "rating": 4.6,
+    "effect": "Tangie starts with a sharp tangerine aroma and ends in waves of happiness, motivation, and flow. Ideal for social or creative sessions.",
+    "image": "images/tangie.jpg"
   }
 ]

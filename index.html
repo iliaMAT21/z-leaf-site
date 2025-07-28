@@ -20,6 +20,18 @@
       font-weight: bold;
       letter-spacing: 1px;
     }
+    #search-container {
+      text-align: center;
+      padding: 20px;
+    }
+    #search-input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -54,7 +66,10 @@
 </head>
 <body>
   <header>Z-Leaf — Библиотека Сортов</header>
-  <div class="container">
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="Поиск сорта...">
+  </div>
+  <div class="container" id="strain-container">
     <div class="card">
       <img src="images/amnesia.jpg" alt="Amnesia Feminized">
       <h2>Amnesia Feminized</h2>
@@ -88,5 +103,18 @@
       <p>Карамельный вкус, устойчив к условиям. Помогает при головной боли и тревожности.</p>
     </div>
   </div>
+  <script>
+    const input = document.getElementById('search-input');
+    const cards = document.querySelectorAll('.card');
+
+    input.addEventListener('input', () => {
+      const value = input.value.toLowerCase();
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(value) ? 'block' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
+

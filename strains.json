@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Gusher",
+    "shortDescription": "🌱 Индика | 📍 Калифорния | ⭐⭐⭐⭐☆<br>🧘 Расслабление и спокойствие",
+    "description": "Type: Hybrid\nTHC: ~22–24%\nRegion: California, USA\nRating: ⭐⭐⭐⭐☆\n\n🍇 Gusher is a potent hybrid bred from Gelato #41 and Triangle Kush. Known for its delicious tropical-fruit and creamy taste...",
+    "image": "gusher.jpg"
+  },
+  {
+    "name": "Amnesia",
+    "shortDescription": "🌿 Сатива | 📍 Нидерланды | ⭐⭐⭐⭐⭐<br>🧠 Энергия и креатив",
+    "description": "Type: Sativa\nTHC: ~20–22%\nRegion: Netherlands\nRating: ⭐⭐⭐⭐⭐\n\n🧠 Amnesia is a legendary sativa strain born in Amsterdam...",
+    "image": "amnesia.jpg"
+  },
+  {
+    "name": "Lemon Cherry",
+    "shortDescription": "🌱 Гибрид | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>🍒 Эйфория и сладкий вкус",
+    "description": "Type: Hybrid\nTHC: ~25–27%\nRegion: California, USA\nRating: ⭐⭐⭐⭐⭐\n\n🍒 Lemon Cherry Gelato combines Sunset Sherbet and GSC...",
+    "image": "lemoncherry.jpg"
+  },
+  {
+    "name": "Sacitrus",
+    "shortDescription": "🌿 Сатива | 📍 США | ⭐⭐⭐⭐☆<br>🍊 Цитрусовая свежесть",
+    "description": "Type: Sativa-Dominant Hybrid\nTHC: ~19–21%\nRegion: Oregon, USA\nRating: ⭐⭐⭐⭐☆\n\n🍊 Sacitrus offers a bright citrus burst...",
+    "image": "sacitru.jpg"
+  },
+  {
+    "name": "Tangie",
+    "shortDescription": "🌿 Сатива | 📍 Калифорния | ⭐⭐⭐⭐⭐<br>✨ Творчество и настроение",
+    "description": "Type: Sativa\nTHC: ~20–23%\nRegion: Southern California\nRating: ⭐⭐⭐⭐⭐\n\n🍊 Tangie reinvents Tangerine Dream...",
+    "image": "tangie.jpg"
+  }
+]

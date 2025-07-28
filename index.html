@@ -113,31 +113,27 @@
   </div>
   <script>
     const input = document.getElementById('search-input');
-    const cards = document.querySelectorAll('.card');
 
-    input.addEventListener('input', () => {
+    input.addEventListener('keyup', () => {
       const value = input.value.toLowerCase().trim();
-      cards.forEach(card => {
+      document.querySelectorAll('.card').forEach(card => {
         const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(value) ? 'flex' : 'none';
+        const description = card.textContent.toLowerCase();
+        card.style.display = title.includes(value) || description.includes(value) ? 'flex' : 'none';
       });
     });
 
     function filterByType(type) {
-      cards.forEach(card => {
-        const pList = card.querySelectorAll('p');
-        let matched = false;
-        pList.forEach(p => {
-          if (p.textContent.includes(type)) matched = true;
-        });
-        card.style.display = (type === '' || matched) ? 'flex' : 'none';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent;
+        card.style.display = (type === '' || text.includes(type)) ? 'flex' : 'none';
       });
     }
 
     function openStrainPage(id) {
-      window.location.href = `strains/${id}.html`;
+      const safeId = encodeURIComponent(id.toLowerCase());
+      window.location.href = `strains/${safeId}.html`;
     }
   </script>
 </body>
 </html>
-

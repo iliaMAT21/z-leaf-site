@@ -7,6 +7,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script defer src="scripts.js"></script>
+  <style>
+    body {
+      background-color: #111;
+      font-family: 'Rubik', sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    .strain-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .strain-card {
+      background: #1b1b1b;
+      border-radius: 12px;
+      padding: 16px;
+      width: 230px;
+      box-shadow: 0 0 10px rgba(0,255,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .strain-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 16px rgba(0,255,0,0.3);
+    }
+    .strain-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .strain-card h3 {
+      margin-top: 10px;
+      margin-bottom: 6px;
+      font-size: 1.2em;
+      color: #fff;
+    }
+    .strain-card .stars {
+      color: gold;
+      font-size: 1em;
+      margin-bottom: 6px;
+    }
+    .strain-card .short-desc {
+      color: #aaa;
+      font-size: 0.95em;
+    }
+  </style>
 </head>
 <body>
   <header class="sticky-header">
@@ -24,9 +72,7 @@
     <input type="text" id="search" oninput="filterStrains()" placeholder="Search for strains by name, effects, origin or type...">
   </div>
 
-  <div class="strain-grid" id="strain-grid">
-    <!-- Cards will be injected here -->
-  </div>
+  <div class="strain-grid" id="strain-grid"></div>
 
   <div id="modal" class="modal" onclick="closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -44,7 +90,7 @@
         type: "Sativa",
         origin: "Netherlands",
         rating: 4.7,
-        effect: "Energizing and creative boost with a touch of euphoria.",
+        effect: "Amnesia offers an energetic, euphoric high with enhanced focus and creativity. A classic morning pick-me-up.",
         image: "images/amnesia.jpg"
       },
       {
@@ -52,7 +98,7 @@
         type: "Indica",
         origin: "California",
         rating: 4.3,
-        effect: "Relaxation and calmness with a sweet fruity flavor.",
+        effect: "Gusher brings deep body relaxation with a fruity taste and sweet aroma. Great for stress and tension.",
         image: "images/gusher.jpg"
       },
       {
@@ -60,7 +106,7 @@
         type: "Hybrid",
         origin: "California",
         rating: 4.5,
-        effect: "Euphoria and happiness with a candy-sweet citrus note.",
+        effect: "Lemon Cherry delivers euphoria and happiness with notes of cherry candy and citrus freshness.",
         image: "images/lemoncherry.jpg"
       },
       {
@@ -68,7 +114,7 @@
         type: "Sativa",
         origin: "USA",
         rating: 4.0,
-        effect: "Fresh citrus aroma with a clear-headed high.",
+        effect: "Bright citrus aroma, clear-headed high and light mood lift. A solid go-to for creative energy.",
         image: "images/sacitruS.jpg"
       },
       {
@@ -76,7 +122,7 @@
         type: "Sativa",
         origin: "California",
         rating: 4.6,
-        effect: "Creativity and uplifted mood with a tangerine dream flavor.",
+        effect: "Tangie kicks off with strong tangerine scent, bringing creativity, mood boost and clean energy.",
         image: "images/tangie.jpg"
       }
     ];
@@ -87,7 +133,8 @@
       card.innerHTML = `
         <img src="${strain.image}" alt="${strain.name}" onerror="this.style.display='none';">
         <h3>${strain.name}</h3>
-        <p>${strain.effect}</p>
+        <div class="stars">${'★'.repeat(Math.round(strain.rating))}</div>
+        <p class="short-desc">${strain.effect.split('.')[0]}.</p>
       `;
       card.onclick = () => openModal(strain);
       return card;
@@ -116,7 +163,7 @@
     function openModal(strain) {
       document.getElementById('modal-title').textContent = strain.name;
       document.getElementById('modal-img').src = strain.image;
-      document.getElementById('modal-desc').textContent = `Type: ${strain.type}\nOrigin: ${strain.origin}\nRating: ${strain.rating}\n\n${strain.effect}`;
+      document.getElementById('modal-desc').textContent = `Type: ${strain.type}\nOrigin: ${strain.origin}\nRating: ${strain.rating}★\n\n${strain.effect}`;
       document.getElementById('modal').style.display = 'flex';
     }
 
@@ -128,3 +175,4 @@
   </script>
 </body>
 </html>
+

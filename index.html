@@ -48,6 +48,12 @@
       width: 220px;
       cursor: pointer;
       transition: transform 0.2s;
+      text-align: center;
+    }
+    .strain-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
     .strain-card:hover {
       transform: scale(1.05);
@@ -55,7 +61,6 @@
     .strain-card h2 {
       margin-bottom: 10px;
       color: #90ee90;
-      text-align: center;
     }
     .rating {
       text-align: center;
@@ -184,7 +189,7 @@
       const search = document.getElementById('search').value.toLowerCase();
       const cards = document.querySelectorAll('.strain-card');
       cards.forEach(card => {
-        const title = card.innerText.toLowerCase();
+        const title = card.querySelector('h2').innerText.toLowerCase();
         card.style.display = title.includes(search) ? 'block' : 'none';
       });
     }
@@ -211,18 +216,23 @@
   </div>
   <div class="strain-grid">
     <div class="strain-card" onclick="showStrain('Gusher')">
+      <img src="images/gusher.png" alt="Gusher">
       <h2>Gusher</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Amnesia')">
+      <img src="images/amnesia.png" alt="Amnesia">
       <h2>Amnesia</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Lemon Cherry')">
+      <img src="images/lemoncherry.png" alt="Lemon Cherry">
       <h2>Lemon Cherry</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Sacitrus')">
+      <img src="images/sacitrus.png" alt="Sacitrus">
       <h2>Sacitrus</h2>
     </div>
     <div class="strain-card" onclick="showStrain('Tangie')">
+      <img src="images/tangie.png" alt="Tangie">
       <h2>Tangie</h2>
     </div>
   </div>
@@ -235,4 +245,3 @@
   </div>
 </body>
 </html>
-

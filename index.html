@@ -110,39 +110,6 @@
       <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
       <p>Прост в выращивании, подходит для новичков. Быстрое цветение — около 10 недель. Бодрящий, творческий эффект.</p>
     </div>
-    <div class="card" onclick="openStrainPage('sacitrus')">
-      <img loading="lazy" src="images/sacitrus.jpg" alt="Sacitrus Haze Feminized">
-      <h2>Sacitrus Haze Feminized</h2>
-      <p><strong>Тип:</strong> Сатива / Гибрид</p>
-      <p><strong>Эффекты:</strong> 😊 Поднятие настроения, 💬 Фокус</p>
-      <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-      <p>Цитрусовый вкус, мягкий психоделический эффект. Поднимает настроение, помогает сосредоточиться.</p>
-    </div>
-    <div class="card" onclick="openStrainPage('lemoncherry')">
-      <img loading="lazy" src="images/lemoncherry.jpg" alt="Lemon Cherry Cookies Auto">
-      <h2>Lemon Cherry Cookies Auto</h2>
-      <p><strong>Тип:</strong> Автоцвет / Гибрид</p>
-      <p><strong>THC:</strong> ~28%</p>
-      <p><strong>Эффекты:</strong> 😊 Эйфория, 🎨 Творчество</p>
-      <p><strong>Оценка:</strong> ⭐⭐⭐⭐⭐</p>
-      <p>Эйфорический эффект, подходит для творчества. Вкус — лимон с вишнёй.</p>
-    </div>
-    <div class="card" onclick="openStrainPage('tangie')">
-      <img loading="lazy" src="images/tangie.jpg" alt="Tangie">
-      <h2>Tangie</h2>
-      <p><strong>Тип:</strong> Сатива-доминантный</p>
-      <p><strong>Эффекты:</strong> ⚡ Энергия, 😊 Настроение</p>
-      <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-      <p>Мандариновый вкус, высокая урожайность, энергетический эффект. Хорош для улицы.</p>
-    </div>
-    <div class="card" onclick="openStrainPage('gusher')">
-      <img loading="lazy" src="images/gusher.jpg" alt="Gusher">
-      <h2>Gusher</h2>
-      <p><strong>Тип:</strong> Индичный гибрид</p>
-      <p><strong>Эффекты:</strong> 🧘 Расслабление, 💊 Обезболивание</p>
-      <p><strong>Оценка:</strong> ⭐⭐⭐⭐☆</p>
-      <p>Карамельный вкус, устойчив к условиям. Помогает при головной боли и тревожности.</p>
-    </div>
   </div>
   <script>
     const input = document.getElementById('search-input');
@@ -158,8 +125,8 @@
 
     function filterByType(type) {
       cards.forEach(card => {
-        const text = card.textContent;
-        card.style.display = (type === '' || text.includes(type)) ? 'flex' : 'none';
+        const title = card.querySelector('p').textContent;
+        card.style.display = (type === '' || title.includes(type)) ? 'flex' : 'none';
       });
     }
 

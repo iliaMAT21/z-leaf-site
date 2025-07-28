@@ -113,10 +113,14 @@
     const cards = document.querySelectorAll('.card');
 
     input.addEventListener('input', () => {
-      const value = input.value.toLowerCase();
+      const value = input.value.toLowerCase().trim();
       cards.forEach(card => {
         const title = card.querySelector('h2').textContent.toLowerCase();
-        card.style.display = title.includes(value) ? 'flex' : 'none';
+        if (title.includes(value)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
     });
   </script>

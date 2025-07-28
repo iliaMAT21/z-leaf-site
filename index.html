@@ -43,19 +43,30 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
+
     .logo {
       font-size: 1.6em;
       font-weight: bold;
       color: var(--accent-color);
     }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
     .nav-links a {
       color: #ccc;
-      margin-left: 20px;
       text-decoration: none;
       font-weight: 500;
       transition: color 0.3s ease;
     }
+
     .nav-links a:hover {
       color: var(--accent-color);
     }
@@ -64,6 +75,7 @@
       text-align: center;
       margin: 30px 0;
     }
+
     .search-bar input {
       padding: 12px 24px;
       border-radius: 32px;
@@ -75,6 +87,7 @@
       max-width: 700px;
       transition: all 0.3s ease;
     }
+
     .search-bar input:focus {
       outline: none;
       border-color: var(--accent-color);
@@ -94,7 +107,8 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 18px;
-      width: 240px;
+      width: 90%;
+      max-width: 300px;
       box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -176,6 +190,29 @@
       background: var(--accent-color);
       color: #000;
     }
+
+    @media screen and (max-width: 600px) {
+      .sticky-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .strain-card {
+        width: 90%;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+        padding-top: 10px;
+      }
+
+      .nav-links a {
+        margin-left: 0;
+        padding: 8px 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -189,20 +226,14 @@
       </nav>
     </div>
   </header>
-  </style>
-</head>
-<body>
-  <header class="sticky-header">
-    <div class="nav-container">
-      <div class="logo">Z-Leaf</div>
-      <button class="burger" onclick="toggleMenu()">☰</button>
-      <nav class="nav-links" id="nav-links">
-        <a href="index.html">🌱 Strains</a>
-        <a href="history.html">📖 History</a>
-      </nav>
-    </div>
-  </header>
-
+  <script>
+    // toggle light/dark mode
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
+</body>
+</html>
   <div class="search-bar">
     <input type="text" id="search" oninput="filterStrains()" placeholder="Search for strains by name, effects, origin or type...">
   </div>

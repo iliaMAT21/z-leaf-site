@@ -114,6 +114,13 @@
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('language', lang);
+      const activeModal = document.getElementById('modal');
+      if (activeModal.style.display === 'flex') {
+        const title = document.getElementById('modal-title').innerText;
+        if (strains[title]) {
+          document.getElementById('modal-desc').innerText = strains[title][lang];
+        }
+      }
     }
 
     function showStrain(strainName) {
@@ -161,5 +168,4 @@
   </div>
 </body>
 </html>
-
 

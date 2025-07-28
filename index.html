@@ -24,7 +24,9 @@
     <input type="text" id="search" oninput="filterStrains()" placeholder="Search for strains by name, effects, origin or type...">
   </div>
 
-  <div class="strain-grid" id="strain-grid"></div>
+  <div class="strain-grid" id="strain-grid">
+    <!-- Cards will be injected here -->
+  </div>
 
   <div id="modal" class="modal" onclick="closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
@@ -34,5 +36,95 @@
       <p id="modal-desc" style="white-space:pre-line; font-size: 1.2em; line-height: 1.6; color: #ddd;"></p>
     </div>
   </div>
+
+  <script>
+    const strains = [
+      {
+        name: "Amnesia",
+        type: "Sativa",
+        origin: "Netherlands",
+        rating: 4.7,
+        effect: "Energizing and creative boost with a touch of euphoria.",
+        image: "images/amnesia.jpg"
+      },
+      {
+        name: "Gusher",
+        type: "Indica",
+        origin: "California",
+        rating: 4.3,
+        effect: "Relaxation and calmness with a sweet fruity flavor.",
+        image: "images/gusher.jpg"
+      },
+      {
+        name: "Lemon Cherry",
+        type: "Hybrid",
+        origin: "California",
+        rating: 4.5,
+        effect: "Euphoria and happiness with a candy-sweet citrus note.",
+        image: "images/lemoncherry.jpg"
+      },
+      {
+        name: "SacitruS",
+        type: "Sativa",
+        origin: "USA",
+        rating: 4.0,
+        effect: "Fresh citrus aroma with a clear-headed high.",
+        image: "images/sacitruS.jpg"
+      },
+      {
+        name: "Tangie",
+        type: "Sativa",
+        origin: "California",
+        rating: 4.6,
+        effect: "Creativity and uplifted mood with a tangerine dream flavor.",
+        image: "images/tangie.jpg"
+      }
+    ];
+
+    function createStrainCard(strain) {
+      const card = document.createElement('div');
+      card.className = 'strain-card';
+      card.innerHTML = `
+        <img src="${strain.image}" alt="${strain.name}" onerror="this.style.display='none';">
+        <h3>${strain.name}</h3>
+        <p>${strain.effect}</p>
+      `;
+      card.onclick = () => openModal(strain);
+      return card;
+    }
+
+    function renderStrains() {
+      const grid = document.getElementById('strain-grid');
+      grid.innerHTML = '';
+      strains.forEach(strain => grid.appendChild(createStrainCard(strain)));
+    }
+
+    function filterStrains() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const filtered = strains.filter(strain =>
+        strain.name.toLowerCase().includes(query) ||
+        strain.effect.toLowerCase().includes(query) ||
+        strain.type.toLowerCase().includes(query) ||
+        strain.origin.toLowerCase().includes(query)
+      );
+
+      const grid = document.getElementById('strain-grid');
+      grid.innerHTML = '';
+      filtered.forEach(strain => grid.appendChild(createStrainCard(strain)));
+    }
+
+    function openModal(strain) {
+      document.getElementById('modal-title').textContent = strain.name;
+      document.getElementById('modal-img').src = strain.image;
+      document.getElementById('modal-desc').textContent = `Type: ${strain.type}\nOrigin: ${strain.origin}\nRating: ${strain.rating}\n\n${strain.effect}`;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    renderStrains();
+  </script>
 </body>
 </html>

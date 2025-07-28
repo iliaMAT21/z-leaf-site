@@ -125,8 +125,12 @@
 
     function filterByType(type) {
       cards.forEach(card => {
-        const title = card.querySelector('p').textContent;
-        card.style.display = (type === '' || title.includes(type)) ? 'flex' : 'none';
+        const pList = card.querySelectorAll('p');
+        let matched = false;
+        pList.forEach(p => {
+          if (p.textContent.includes(type)) matched = true;
+        });
+        card.style.display = (type === '' || matched) ? 'flex' : 'none';
       });
     }
 
@@ -136,3 +140,4 @@
   </script>
 </body>
 </html>
+

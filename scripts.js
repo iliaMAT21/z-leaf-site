@@ -36,4 +36,53 @@ function filterStrains() {
     card.style.display = title.includes(search) ? 'block' : 'none';
   });
 }
+let strains = [];
+
+fetch('strains.json')
+  .then(res => res.json())
+  .then(data => {
+    strains = data;
+    renderStrains(strains);
+  });
+
+function renderStrains(strains) {
+  const container = document.getElementById('strain-grid');
+  container.innerHTML = '';
+  strains.forEach(strain => {
+    const card = document.createElement('div');
+    card.className = 'strain-card';
+    card.innerHTML = `
+      <img src="images/${strain.image}" alt="${strain.name}">
+      <h2>${strain.name}</h2>
+      <div class="strain-description">
+        ${strain.emoji} ${strain.type} | 📍 ${strain.region} | ${'⭐'.repeat(strain.rating)}${'☆'.repeat(5 - strain.rating)}<br>
+        ${strain.effect}
+      </div>
+    `;
+    card.onclick = () => showModal(strain);
+    container.appendChild(card);
+  });
+}
+
+function showModal(strain) {
+  document.getElementById('modal-title').innerText = strain.name;
+  document.getElementById('modal-img').src = `images/${strain.image}`;
+  document.getElementById('modal-desc').innerText = strain.desc;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function filterStrains() {
+  const val = document.getElementById('search').value.toLowerCase();
+  const filtered = strains.filter(s => s.name.toLowerCase().includes(val));
+  renderStrains(filtered);
+}
+
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('active');
+}
+
 

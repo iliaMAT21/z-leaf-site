@@ -65,6 +65,9 @@
       font-size: 24px;
       cursor: pointer;
     }
+    .rating span.active {
+      color: gold;
+    }
     .like-button {
       background: #e33;
       color: #fff;
@@ -151,6 +154,17 @@
       document.getElementById('modal').style.display = 'none';
     }
 
+    function setRating(rating) {
+      const stars = document.querySelectorAll('.rating span');
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+    }
+
     function likeStrain() {
       alert(currentLang === 'ru' ? 'Спасибо! Мы учли твою оценку 😎' : 'Thank you! Your feedback has been recorded 😎');
     }
@@ -164,11 +178,11 @@
   </div>
   <div class="rating">
     <div>Оцени этот сорт:</div>
-    <span onclick="likeStrain()">⭐</span>
-    <span onclick="likeStrain()">⭐</span>
-    <span onclick="likeStrain()">⭐</span>
-    <span onclick="likeStrain()">⭐</span>
-    <span onclick="likeStrain()">⭐</span>
+    <span onclick="setRating(1)">⭐</span>
+    <span onclick="setRating(2)">⭐</span>
+    <span onclick="setRating(3)">⭐</span>
+    <span onclick="setRating(4)">⭐</span>
+    <span onclick="setRating(5)">⭐</span>
     <br>
     <button class="like-button" onclick="likeStrain()">❤️ Мне понравилось</button>
   </div>
@@ -199,4 +213,3 @@
   </div>
 </body>
 </html>
-

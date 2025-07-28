@@ -46,6 +46,19 @@
       background-color: #333;
       color: #fff;
     }
+    .language-switcher {
+      text-align: center;
+      margin: 10px;
+    }
+    .language-switcher button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: #444;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -87,6 +100,26 @@
       margin: 4px 0;
       line-height: 1.4;
     }
+    .rating {
+      margin-top: 10px;
+    }
+    .star {
+      font-size: 20px;
+      cursor: pointer;
+      color: #888;
+    }
+    .star.filled {
+      color: gold;
+    }
+    .like-button {
+      margin-top: 10px;
+      background: #e63946;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+    }
     .modal {
       position: fixed;
       top: 0; left: 0;
@@ -113,9 +146,13 @@
       color: #fff;
       cursor: pointer;
     }
-    </style>
+  </style>
 </head>
 <body>
+  <div class="language-switcher">
+    <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
+    <button onclick="setLanguage('en')">🇺🇸 English</button>
+  </div>
     <header>Z-Leaf — Библиотека Сортов</header>
   <div id="search-container">
     <input type="text" id="search-input" placeholder="Поиск сорта...">

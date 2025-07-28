@@ -48,3 +48,8 @@ function closeModal() {
 }
 
 loadStrains();
+
+}
+function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }

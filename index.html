@@ -9,48 +9,30 @@
   <script defer src="scripts.js"></script>
 </head>
 <body>
-<nav>
-  <a href="index.html">🌱 Strains</a>
-  <a href="history.html">📖 History</a>
-</nav>
-<header>Z-Leaf — Strain Library</header>
-<div class="search-bar">
-  <input type="text" id="search" oninput="filterStrains()" placeholder="Search...">
-</div>
-<div class="strain-grid">
-  <div class="strain-card" onclick="showStrain('Gusher')">
-    <img src="images/gusher.jpg" alt="Gusher">
-    <h2>Gusher</h2>
-    <div class="strain-description">🌱 Hybrid | 📍 California | ⭐⭐⭐⭐☆<br>🍇 Relaxing and Euphoric</div>
+  <header class="sticky-header">
+    <div class="nav-container">
+      <div class="logo">Z-Leaf</div>
+      <button class="burger" onclick="toggleMenu()">☰</button>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">🌱 Strains</a>
+        <a href="history.html">📖 History</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="search" oninput="filterStrains()" placeholder="Search...">
   </div>
-  <div class="strain-card" onclick="showStrain('Amnesia')">
-    <img src="images/amnesia.jpg" alt="Amnesia">
-    <h2>Amnesia</h2>
-    <div class="strain-description">🌿 Sativa | 📍 Netherlands | ⭐⭐⭐⭐⭐<br>🧠 Energy and Creativity</div>
+
+  <div class="strain-grid" id="strain-grid"></div>
+
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
+      <p id="modal-desc" style="white-space:pre-line"></p>
+    </div>
   </div>
-  <div class="strain-card" onclick="showStrain('Lemon Cherry')">
-    <img src="images/lemoncherry.jpg" alt="Lemon Cherry">
-    <h2>Lemon Cherry</h2>
-    <div class="strain-description">🌱 Hybrid | 📍 California | ⭐⭐⭐⭐⭐<br>🍒 Euphoric and Sweet</div>
-  </div>
-  <div class="strain-card" onclick="showStrain('Sacitrus')">
-    <img src="images/sacitrus.jpg" alt="Sacitrus">
-    <h2>Sacitrus</h2>
-    <div class="strain-description">🌿 Sativa-Hybrid | 📍 Oregon | ⭐⭐⭐⭐☆<br>🍊 Uplifting Citrus Buzz</div>
-  </div>
-  <div class="strain-card" onclick="showStrain('Tangie')">
-    <img src="images/tangie.jpg" alt="Tangie">
-    <h2>Tangie</h2>
-    <div class="strain-description">🌿 Sativa | 📍 SoCal | ⭐⭐⭐⭐⭐<br>🍊 Creative and Energetic</div>
-  </div>
-</div>
-<div id="modal" class="modal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <span class="close-button" onclick="closeModal()">&times;</span>
-    <h2 id="modal-title"></h2>
-    <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:10px; margin: 20px 0;">
-    <p id="modal-desc" style="white-space:pre-line"></p>
-  </div>
-</div>
 </body>
 </html>

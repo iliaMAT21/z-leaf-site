@@ -1,8 +1,3 @@
-// theme-toggle.js
 function toggleTheme() {
-  document.body.classList.toggle("light-mode");
-}
-
-function toggleTheme() {
-  document.body.classList.toggle('light-mode');
+    document.body.classList.toggle("light-theme");
 }

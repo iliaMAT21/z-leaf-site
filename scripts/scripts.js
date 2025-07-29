@@ -125,3 +125,7 @@ function initAnimations() {
     }, { threshold: 0.2 });
     cards.forEach(card => observer.observe(card));
 }
+
+fetch('strains.json')
+  .then(response => response.json())
+  .then(data => renderStrains(data));

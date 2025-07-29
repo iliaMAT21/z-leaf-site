@@ -1,40 +1,47 @@
 [
   {
+    "name": "Gusher",
+    "type": "Hybrid",
+    "origin": "California, USA",
+    "rating": 4,
+    "image": "gusher.jpg",
+    "short": "🍇 Sweet tropical flavor, relaxing hybrid effect.",
+    "description": "Gusher is a powerful hybrid bred from Gelato #41 and Triangle Kush. Known for its sweet tropical and creamy flavor, this strain delivers a relaxing body high with a euphoric twist. Popular in California dispensaries, Gusher is a favorite for stress relief, mild pain management, and evening relaxation."
+  },
+  {
     "name": "Amnesia",
     "type": "Sativa",
     "origin": "Netherlands",
-    "rating": 4.7,
-    "effect": "Amnesia offers an energetic, euphoric high with enhanced focus and creativity. Perfect for daytime use when you need mental clarity without being too wired.",
-    "image": "images/amnesia.jpg"
-  }
-  {
-    "name": "Gusher",
-    "type": "Indica",
-    "origin": "California",
-    "rating": 4.3,
-    "effect": "Gusher brings deep physical relaxation and a fruity punch of flavor. Ideal for stress relief, chill nights, or winding down after a long day.",
-    "image": "images/gusher.jpg"
-  }
+    "rating": 5,
+    "image": "amnesia.jpg",
+    "short": "🧠 Lemony sativa with uplifting, creative energy.",
+    "description": "Amnesia is a legendary sativa with a zesty citrus aroma and cerebral high. Originating in Amsterdam, it combines Super Silver Haze and Afghan genetics. Known for its long-lasting energetic and creative effects, Amnesia is ideal for daytime use, boosting focus and mood without heavy sedation."
+  },
   {
     "name": "Lemon Cherry",
     "type": "Hybrid",
-    "origin": "California",
-    "rating": 4.5,
-    "effect": "Lemon Cherry delivers a blissful high with hints of cherry candy and citrus. It balances euphoria and calm, making it great for creativity and mood boosts.",
-    "image": "images/lemoncherry.jpg"
-  }
+    "origin": "California, USA",
+    "rating": 5,
+    "image": "lemoncherry.jpg",
+    "short": "🍒 Fruity and euphoric, perfect for social evenings.",
+    "description": "Lemon Cherry Gelato is a delicious hybrid that blends Sunset Sherbet and Girl Scout Cookies genetics. Its fruity, sweet, and slightly creamy flavor pairs with an uplifting yet relaxing effect. Popular for socializing, stress relief, and evening relaxation, this strain is a West Coast favorite."
+  },
   {
-  "name": "Sacitrus",
-  "image": "sacitrus.jpg",
-  "rating": 4,
-  "description": "Bright citrus aroma, clear-headed high and light mood lift."
-}
+    "name": "Sacitrus",
+    "type": "Sativa-Dominant Hybrid",
+    "origin": "Oregon, USA",
+    "rating": 4,
+    "image": "sacitrus.jpg",
+    "short": "🍊 Citrus burst, energetic and mood-lifting.",
+    "description": "Sacitrus is a bright sativa-dominant hybrid with a strong citrus aroma and fresh flavor. Grown in the cool climates of Oregon, it’s known for boosting energy, creativity, and focus. Ideal for morning or daytime use, Sacitrus can improve productivity and uplift your mood without heavy sedation."
+  },
   {
     "name": "Tangie",
     "type": "Sativa",
-    "origin": "California",
-    "rating": 4.6,
-    "effect": "Tangie starts with a sharp tangerine aroma and ends in waves of happiness, motivation, and flow. Ideal for social or creative sessions.",
-    "image": "images/tangie.jpg"
+    "origin": "Southern California, USA",
+    "rating": 5,
+    "image": "tangie.jpg",
+    "short": "🍊 Classic tangerine aroma with euphoric focus.",
+    "description": "Tangie is a famous sativa strain that reinvents the classic Tangerine Dream. Its strong citrus aroma and euphoric high make it a go-to choice for artists, musicians, and creative thinkers. Tangie is perfect for daytime use, providing an energetic and focused experience with a bright, uplifting effect."
   }
 ]

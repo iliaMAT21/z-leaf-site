@@ -94,15 +94,18 @@ function randomStrain() {
     openModal(strain);
 }
 
-function openModal(strain) {
-    document.getElementById("modal-image").src = `images/${strain.image}`;
-    document.getElementById("modal-title").textContent = strain.name;
-    document.getElementById("modal-type").textContent = `Type: ${strain.type}`;
-    document.getElementById("modal-origin").textContent = `Origin: ${strain.origin}`;
-    document.getElementById("modal-rating").textContent = `Rating: ${strain.rating}★`;
-    document.getElementById("modal-effects").textContent = `Effects: ${strain.effects.join(", ")}`;
-    document.getElementById("modal-description").textContent = strain.description;
-    document.getElementById("strain-modal").classList.remove("hidden");
+function openModal(name) {
+  const strain = allStrains.find(s => s.name === name);
+  if (!strain) return;
+
+  document.getElementById('modal-image').src = strain.image;
+  document.getElementById('modal-title').innerText = strain.name;
+  document.getElementById('modal-type').innerText = `Type: ${strain.type}`;
+  document.getElementById('modal-origin').innerText = `Origin: ${strain.origin}`;
+  document.getElementById('modal-rating').innerText = `Rating: ${strain.rating}★`;
+  document.getElementById('modal-description').innerText = strain.effects ? strain.effects.join(', ') : 'No effects listed';
+
+  document.getElementById('strain-modal').classList.remove('hidden');
 }
 
 function closeModal() {

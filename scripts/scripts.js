@@ -127,5 +127,7 @@ function initAnimations() {
 }
 
 fetch('strains.json')
-  .then(response => response.json())
-  .then(data => renderStrains(data));
+  .then(res => res.json())
+  .then(data => {
+    renderStrains(data); // имя функции должно совпадать с определением
+  });

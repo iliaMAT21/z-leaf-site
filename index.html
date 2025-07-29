@@ -3,26 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Z-Leaf — Strain Library</title>
+  <title>Z-Leaf — Premium Strain Library</title>
+  <meta name="description" content="Explore the ultimate premium cannabis strain library. Find Sativa, Indica, Hybrid strains with effects, ratings, and origins.">
+  <meta property="og:title" content="Z-Leaf — Premium Strain Library">
+  <meta property="og:description" content="Explore the ultimate premium cannabis strain library with ratings and effects.">
+  <meta property="og:image" content="images/og-preview.jpg">
+  <meta property="og:type" content="website">
+
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="sticky-header">
-    <div class="logo">Z-Leaf</div>
+    <div class="logo">🌿 Z-Leaf</div>
     <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
     <nav class="nav-links" id="nav-links">
-      <a href="index.html">🌱 Strains</a>
-      <a href="history.html">📖 History</a>
+      <a href="index.html">Strains</a>
+      <a href="history.html">History</a>
     </nav>
   </header>
 
+  <!-- Панель фильтров -->
+  <section class="filters">
+    <div class="filter-group" id="type-filters"></div>
+    <div class="filter-group" id="region-filters"></div>
+    <div class="filter-group" id="effect-filters"></div>
+  </section>
+
+  <!-- Панель поиска -->
   <div class="search-bar">
-    <input type="text" id="search" placeholder="Search for strains by name, effects, origin or type...">
+    <input type="text" id="search" placeholder="Search for strains by name, type, effect or origin...">
+    <button id="random-btn">🎲 Random Strain</button>
   </div>
 
+  <!-- Топ 3 -->
+  <section class="top-rated">
+    <h2>🔥 Top Rated Strains</h2>
+    <div id="top-rated-container" class="top-rated-grid"></div>
+  </section>
+
+  <!-- Основная сетка -->
   <main id="strains-container" class="strains-grid"></main>
 
+  <!-- Модалка сортов -->
   <div id="strain-modal" class="modal hidden">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -31,15 +54,22 @@
       <p id="modal-type"></p>
       <p id="modal-origin"></p>
       <p id="modal-rating"></p>
+      <p id="modal-effects"></p>
       <p id="modal-description"></p>
+      <button id="compare-btn">Add to Compare</button>
     </div>
   </div>
 
-  <script defer src="scripts/init.js"></script>
-  <script defer src="scripts/modal.js"></script>
-  <script defer src="scripts/theme-toggle.js"></script>
-  <script defer src="scripts/search.js"></script>
-  <script defer src="scripts/responsive.js"></script>
-  <script defer src="scripts/cards-animations.js"></script>
+  <!-- Модалка сравнения -->
+  <div id="compare-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeCompare()">&times;</span>
+      <h2>Compare Strains</h2>
+      <div id="compare-container"></div>
+    </div>
+  </div>
+
+  <script src="scripts/scripts.js" defer></script>
 </body>
 </html>
+

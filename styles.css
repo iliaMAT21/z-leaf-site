@@ -143,3 +143,14 @@ nav a:hover {
     font-size: 16px;
   }
 }
+/* Светлая тема для модального окна */
+.light-mode .modal-content {
+  background: #fffef6; /* Светлый, но не белоснежный фон */
+  color: #222;         /* Чёткий тёмный текст */
+}
+
+.light-mode .modal-content h2,
+.light-mode .modal-content p {
+  color: #222 !important; /* Жёсткая установка цвета текста */
+}
+

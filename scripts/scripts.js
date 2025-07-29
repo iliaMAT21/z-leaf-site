@@ -1,6 +1,20 @@
 let strainsData = [];
 let compareList = [];
 
+function renderStrains(data) {
+  const container = document.getElementById('strains-container');
+  container.innerHTML = '';
+  data.forEach(strain => {
+    container.innerHTML += `
+      <div class="strain-card" onclick="openModal('${strain.name}')">
+        <img src="${strain.image}" alt="${strain.name}">
+        <h2>${strain.name}</h2>
+        <p>${strain.effects ? strain.effects.join(', ') : ''}</p>
+      </div>
+    `;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     fetch('strains.json')
         .then(res => res.json())

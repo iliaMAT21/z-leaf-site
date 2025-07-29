@@ -1,264 +1,230 @@
+/* === Основные стили === */
 body {
-  margin: 0;
-  font-family: 'Rubik', sans-serif;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    background: #0f0f0f;
+    color: #f0f0f0;
+    transition: background 0.3s, color 0.3s;
 }
 
-:root {
-  --bg-color: #0f0f0f;
-  --text-color: #f0f0f0;
-  --accent: #ffd700;
-  --card-bg: #1a1a1a;
-  --modal-bg: #111;
+/* Светлая тема */
+body.light-theme {
+    background: #f5f5f5;
+    color: #1a1a1a;
 }
 
-.light-mode {
-  --bg-color: #fefefe;
-  --text-color: #111;
-  --accent: #c29200;
-  --card-bg: #fff;
-  --modal-bg: #f5f5f5;
-}
-
+/* === Хедер === */
 .sticky-header {
-  position: sticky;
-  top: 0;
-  background: var(--card-bg);
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 32px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1a1a1a;
+    padding: 10px;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+body.light-theme .sticky-header {
+    background: #fff8dc;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--accent);
+    font-size: 2rem;
+    font-weight: 700;
+    color: gold;
+    margin-bottom: 5px;
 }
 
 .theme-toggle {
-  background: none;
-  border: 2px solid var(--accent);
-  color: var(--accent);
-  padding: 4px 12px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
+    background: transparent;
+    border: 2px solid gold;
+    color: gold;
+    font-size: 1.2rem;
+    padding: 3px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+
+.theme-toggle:hover {
+    background: gold;
+    color: #1a1a1a;
 }
 
 .nav-links a {
-  color: var(--text-color);
-  margin-left: 16px;
-  text-decoration: none;
+    color: #f0f0f0;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
+.nav-links a:hover {
+    color: gold;
+}
+
+body.light-theme .nav-links a {
+    color: #333;
+}
+
+body.light-theme .nav-links a:hover {
+    color: goldenrod;
+}
+
+/* === Поиск === */
 .search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
 }
 
 .search-bar input {
-  padding: 10px 16px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 420px;
-  border: 1px solid var(--accent);
-  background: var(--card-bg);
-  color: var(--text-color);
+    padding: 10px;
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid gold;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background: #222;
+    color: white;
+    transition: 0.3s;
 }
 
-header {
-  background: #1a1a1a;
-  padding: 20px;
-  text-align: center;
-  font-size: 6vw;
-  font-weight: bold;
-  letter-spacing: 1px;
+.search-bar input:focus {
+    box-shadow: 0 0 10px gold;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  background: #111;
-  padding: 10px;
+body.light-theme .search-bar input {
+    background: white;
+    color: #1a1a1a;
 }
 
-nav a {
-  color: #90ee90;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-.search-bar input {
-  padding: 8px;
-  width: 80vw;
-  max-width: 300px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 4vw;
-}
-
+/* === Карточки сортов === */
 .strains-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-}
-
-.card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 16px;
-  width: 260px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  box-shadow: 0 0 12px transparent;
-}
-
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 12px var(--accent);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
 
 .strain-card {
-  background: #1f1f1f;
-  padding: 15px;
-  border-radius: 12px;
-  width: 90vw;
-  max-width: 280px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    border-radius: 12px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 12px;
+.strain-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-.card h3 {
-  margin: 12px 0 4px;
-  font-size: 20px;
-  color: var(--accent);
+.strain-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px gold;
 }
 
-.card p {
-  margin: 4px 0;
-  color: var(--text-color);
+.rating {
+    color: gold;
+    margin: 5px 0;
+    font-size: 1.1rem;
 }
 
-.strain-card h2 {
-  margin-bottom: 10px;
-  color: #90ee90;
-  font-size: 5vw;
+.short-desc {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    opacity: 0.8;
 }
 
+body.light-theme .strain-card {
+    background: #fff8dc;
+    color: #333;
+}
+
+/* === Модальное окно === */
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    transition: opacity 0.3s;
+}
+
+.modal.hidden {
+    display: none;
 }
 
 .modal-content {
-  background: var(--modal-bg);
-  padding: 24px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 600px;
-  overflow-y: auto;
-  color: var(--text-color);
+    background: #1a1a1a;
+    color: #f0f0f0;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    overflow-y: auto;
+    max-height: 80vh;
+    transition: background 0.3s;
 }
 
-.modal img {
-  width: 100%;
-  border-radius: 12px;
+body.light-theme .modal-content {
+    background: #fff8dc;
+    color: #1a1a1a;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .close-modal {
-  float: right;
-  font-size: 28px;
-  cursor: pointer;
-  color: var(--text-color);
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #f0f0f0;
+    transition: 0.3s;
 }
 
+.close-modal:hover {
+    color: gold;
+}
+
+body.light-theme .close-modal {
+    color: #333;
+}
+
+body.light-theme .close-modal:hover {
+    color: goldenrod;
+}
+
+/* === Адаптив === */
 @media (max-width: 768px) {
-  .card {
-    width: 90%;
-  }
+    .strains-grid {
+        flex-direction: column;
+        align-items: center;
+    }
 
-    .sticky-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
-  }
-
-    .nav-links {
-    margin-top: 10px;
-  }
+    .strain-card {
+        width: 80%;
+    }
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideIn {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close-button {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-  color: #aaa;
-}
-
-.close-button:hover {
-  color: #fff;
-}
-
-@media (min-width: 768px) {
-  .strain-card {
-    width: 220px;
-  }
-  .strain-card h2 {
-    font-size: 18px;
-  }
-  header {
-    font-size: 28px;
-  }
-  .search-bar input {
-    font-size: 16px;
-  }
-}
-/* Светлая тема для модального окна */
-.light-mode .modal-content {
-  background: #fffef6; /* Светлый, но не белоснежный фон */
-  color: #222;         /* Чёткий тёмный текст */
-}
-
-.light-mode .modal-content h2,
-.light-mode .modal-content p {
-  color: #222 !important; /* Жёсткая установка цвета текста */
-}
-

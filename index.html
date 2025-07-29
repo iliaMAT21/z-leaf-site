@@ -6,259 +6,40 @@
   <title>Z-Leaf — Strain Library</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script defer src="scripts.js"></script>
-  <style>
-    :root {
-      --bg-color: #0f0f0f;
-      --card-color: #151515;
-      --text-color: #eee;
-      --accent-color: gold;
-      --border-color: #2a2a2a;
-      --header-bg: #0f0f0f;
-      --nav-bg: #151515;
-    }
-
-    body {
-      background: linear-gradient(135deg, var(--bg-color), #1a1a1a);
-      font-family: 'Rubik', sans-serif;
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    .light-mode {
-      --bg-color: #fff8f0;
-      --card-color: #fffefc;
-      --text-color: #111;
-      --accent-color: #bfa133;
-      --border-color: #e0e0e0;
-      --header-bg: #fff8f0;
-      --nav-bg: #fff0d9;
-    }
-
-    .sticky-header {
-      position: sticky;
-      top: 0;
-      background-color: var(--header-bg);
-      z-index: 1000;
-      padding: 12px 24px;
-      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      transition: background 0.3s ease;
-    }
-
-    .logo {
-      font-size: 1.6em;
-      font-weight: bold;
-      color: var(--accent-color);
-    }
-
-    .theme-toggle {
-      font-size: 1em;
-      padding: 6px 14px;
-      background: var(--card-color);
-      color: var(--text-color);
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      cursor: pointer;
-      margin-left: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background: var(--accent-color);
-      color: #000;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 10px;
-      background-color: var(--nav-bg);
-      padding: 8px 16px;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-    }
-
-    .nav-links a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .search-bar {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .search-bar input {
-      padding: 12px 24px;
-      border-radius: 32px;
-      background-color: var(--card-color);
-      border: 1px solid var(--border-color);
-      color: var(--text-color);
-      font-size: 1em;
-      width: 90%;
-      max-width: 700px;
-      transition: all 0.3s ease;
-    }
-
-    .search-bar input:focus {
-      outline: none;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 10px var(--accent-color);
-    }
-
-    @media screen and (max-width: 600px) {
-      .sticky-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .nav-links {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
-        padding-top: 10px;
-      }
-      .nav-links a {
-        padding: 8px 0;
-      }
-    }
-  </style>
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-    }
-  </script>
 </head>
 <body>
   <header class="sticky-header">
-    <div class="nav-container">
-      <div class="logo">Z-Leaf</div>
-      <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
-      <nav class="nav-links" id="nav-links">
-        <a href="index.html">🌱 Strains</a>
-        <a href="history.html">📖 History</a>
-      </nav>
-    </div>
+    <div class="logo">Z-Leaf</div>
+    <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html">🌱 Strains</a>
+      <a href="history.html">📖 History</a>
+    </nav>
   </header>
-</body>
-</html>
+
   <div class="search-bar">
-    <input type="text" id="search" oninput="filterStrains()" placeholder="Search for strains by name, effects, origin or type...">
+    <input type="text" id="search" placeholder="Search for strains by name, effects, origin or type...">
   </div>
 
-  <div class="strain-grid" id="strain-grid"></div>
+  <main id="strains-container" class="strains-grid"></main>
 
-  <div id="modal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close-button" onclick="closeModal()">&times;</span>
+  <div id="strain-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <img id="modal-image" src="" alt="strain image">
       <h2 id="modal-title"></h2>
-      <img id="modal-img" src="" alt="strain image" style="width:100%; border-radius:12px; margin: 20px 0;">
-      <p id="modal-desc" style="white-space:pre-line; font-size: 1.1em; line-height: 1.6; color: #ddd;"></p>
+      <p id="modal-type"></p>
+      <p id="modal-origin"></p>
+      <p id="modal-rating"></p>
+      <p id="modal-description"></p>
     </div>
   </div>
 
-  <script>
-    const strains = [
-      {
-        name: "Amnesia",
-        type: "Sativa",
-        origin: "Netherlands",
-        rating: 4.7,
-        effect: "Amnesia offers an energetic, euphoric high with enhanced focus and creativity. A classic morning pick-me-up.",
-        image: "images/amnesia.jpg"
-      },
-      {
-        name: "Gusher",
-        type: "Indica",
-        origin: "California",
-        rating: 4.3,
-        effect: "Gusher brings deep body relaxation with a fruity taste and sweet aroma. Great for stress and tension.",
-        image: "images/gusher.jpg"
-      },
-      {
-        name: "Lemon Cherry",
-        type: "Hybrid",
-        origin: "California",
-        rating: 4.5,
-        effect: "Lemon Cherry delivers euphoria and happiness with notes of cherry candy and citrus freshness.",
-        image: "images/lemoncherry.jpg"
-      },
-      {
-        name: "Sacitrus",
-        type: "Sativa",
-        origin: "USA",
-        rating: 4.0,
-        effect: "Bright citrus aroma, clear-headed high and light mood lift. A solid go-to for creative energy.",
-        image: "images/sacitrus.jpg"
-      },
-      {
-        name: "Tangie",
-        type: "Sativa",
-        origin: "California",
-        rating: 4.6,
-        effect: "Tangie kicks off with strong tangerine scent, bringing creativity, mood boost and clean energy.",
-        image: "images/tangie.jpg"
-      }
-    ];
-
-    function createStrainCard(strain) {
-      const card = document.createElement('div');
-      card.className = 'strain-card';
-      card.innerHTML = `
-        <img src="${strain.image}" alt="${strain.name}" onerror="this.style.display='none';">
-        <h3>${strain.name}</h3>
-        <div class="stars">${'★'.repeat(Math.round(strain.rating))}</div>
-        <p class="short-desc">${strain.effect.split('.')[0]}.</p>
-      `;
-      card.onclick = () => openModal(strain);
-      return card;
-    }
-
-    function renderStrains() {
-      const grid = document.getElementById('strain-grid');
-      grid.innerHTML = '';
-      strains.forEach(strain => grid.appendChild(createStrainCard(strain)));
-    }
-
-    function filterStrains() {
-      const query = document.getElementById('search').value.toLowerCase();
-      const filtered = strains.filter(strain =>
-        strain.name.toLowerCase().includes(query) ||
-        strain.effect.toLowerCase().includes(query) ||
-        strain.type.toLowerCase().includes(query) ||
-        strain.origin.toLowerCase().includes(query)
-      );
-
-      const grid = document.getElementById('strain-grid');
-      grid.innerHTML = '';
-      filtered.forEach(strain => grid.appendChild(createStrainCard(strain)));
-    }
-
-    function openModal(strain) {
-      document.getElementById('modal-title').textContent = strain.name;
-      document.getElementById('modal-img').src = strain.image;
-      document.getElementById('modal-desc').textContent = `Type: ${strain.type}\nOrigin: ${strain.origin}\nRating: ${strain.rating}★\n\n${strain.effect}`;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-
-    renderStrains();
-  </script>
+  <script defer src="scripts/init.js"></script>
+  <script defer src="scripts/modal.js"></script>
+  <script defer src="scripts/theme-toggle.js"></script>
+  <script defer src="scripts/search.js"></script>
+  <script defer src="scripts/responsive.js"></script>
+  <script defer src="scripts/cards-animations.js"></script>
 </body>
 </html>

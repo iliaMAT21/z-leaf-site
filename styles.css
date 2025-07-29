@@ -189,3 +189,26 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+  
+  .modal-content {
+  background: var(--card-color);
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgba(255, 215, 0, 0.25);
+  max-width: 600px;
+  width: 90%;
+  color: var(--text-color); /* Добавляем! */
+}
+
+.light-mode .modal-content {
+  background: #fff8e7;
+  color: #111; /* Тёмный текст в светлом режиме */
+}
+
+.light-mode .modal-content h2 {
+  color: #000; /* Заголовок тоже тёмный */
+}
+
+.light-mode .modal-content p {
+  color: #333; /* Основной текст тёмно-серый для лучшей читаемости */
+}

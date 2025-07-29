@@ -1,23 +1,23 @@
-// init.js
-// Инициализация всех функций при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Initializing all features...");
-});
+    fetch('strains.json')
+        .then(response => response.json())
+        .then(strains => renderStrains(strains));
 
-fetch('strains.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('strains-container');
-    data.forEach(strain => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="images/${strain.image}" alt="${strain.name}">
-        <h3>${strain.name}</h3>
-        <p>${'★'.repeat(Math.floor(strain.rating))}</p>
-        <p>${strain.description.slice(0, 100)}...</p>
-      `;
-      card.addEventListener('click', () => openModal(strain));
-      container.appendChild(card);
-    });
-  });
+    function renderStrains(strains) {
+        const container = document.getElementById("strains-container");
+        container.innerHTML = "";
+
+        strains.forEach(strain => {
+            const card = document.createElement("div");
+            card.className = "strain-card";
+            card.innerHTML = `
+                <img src="images/${strain.image}" alt="${strain.name}">
+                <h2>${strain.name}</h2>
+                <p class="rating">${"★".repeat(strain.rating)}</p>
+                <p class="short-desc">${strain.short}</p>
+            `;
+            card.addEventListener("click", () => openModal(strain));
+            container.appendChild(card);
+        });
+    }
+});

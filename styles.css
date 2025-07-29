@@ -1,9 +1,75 @@
 body {
-  font-family: 'Rubik', sans-serif;
-  background: #0f0f0f;
-  color: #f0f0f0;
   margin: 0;
-  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+:root {
+  --bg-color: #0f0f0f;
+  --text-color: #f0f0f0;
+  --accent: #ffd700;
+  --card-bg: #1a1a1a;
+  --modal-bg: #111;
+}
+
+.light-mode {
+  --bg-color: #fefefe;
+  --text-color: #111;
+  --accent: #c29200;
+  --card-bg: #fff;
+  --modal-bg: #f5f5f5;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.search-bar input {
+  padding: 10px 16px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  border: 1px solid var(--accent);
+  background: var(--card-bg);
+  color: var(--text-color);
 }
 
 header {
@@ -33,12 +99,6 @@ nav a:hover {
   text-decoration: underline;
 }
 
-.search-bar {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
 .search-bar input {
   padding: 8px;
   width: 80vw;
@@ -48,12 +108,28 @@ nav a:hover {
   font-size: 4vw;
 }
 
-.strain-grid {
+.strains-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
   gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px;
+  width: 260px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  box-shadow: 0 0 12px transparent;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 12px var(--accent);
 }
 
 .strain-card {
@@ -73,9 +149,20 @@ nav a:hover {
   margin-bottom: 10px;
 }
 
-.strain-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 10px #90ee90;
+.card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.card h3 {
+  margin: 12px 0 4px;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.card p {
+  margin: 4px 0;
+  color: var(--text-color);
 }
 
 .strain-card h2 {
@@ -85,27 +172,54 @@ nav a:hover {
 }
 
 .modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0,0,0,0.8);
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  animation: fadeIn 0.3s ease;
 }
 
 .modal-content {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
+  background: var(--modal-bg);
+  padding: 24px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  overflow-y: auto;
+  color: var(--text-color);
+}
+
+.modal img {
   width: 100%;
-  max-width: 500px;
-  text-align: center;
-  animation: slideIn 0.3s ease;
+  border-radius: 12px;
+}
+
+.close-modal {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+
+    .sticky-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+    .nav-links {
+    margin-top: 10px;
+  }
 }
 
 @keyframes fadeIn {

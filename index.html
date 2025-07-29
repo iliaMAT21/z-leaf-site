@@ -28,13 +28,13 @@
     }
 
     .light-mode {
-      --bg-color: #fff;
-      --card-color: #fff8e7;
+      --bg-color: #fff8f0;
+      --card-color: #fffefc;
       --text-color: #111;
       --accent-color: #bfa133;
-      --border-color: #ddd;
-      --header-bg: #fff;
-      --nav-bg: #f9f9f9;
+      --border-color: #e0e0e0;
+      --header-bg: #fff8f0;
+      --nav-bg: #fff0d9;
     }
 
     .sticky-header {
@@ -43,7 +43,7 @@
       background-color: var(--header-bg);
       z-index: 1000;
       padding: 12px 24px;
-      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,6 +55,23 @@
       font-size: 1.6em;
       font-weight: bold;
       color: var(--accent-color);
+    }
+
+    .theme-toggle {
+      font-size: 1em;
+      padding: 6px 14px;
+      background: var(--card-color);
+      color: var(--text-color);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      margin-left: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--accent-color);
+      color: #000;
     }
 
     .nav-links {
@@ -119,6 +136,11 @@
       }
     }
   </style>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+  </script>
 </head>
 <body>
   <header class="sticky-header">
